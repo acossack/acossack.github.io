@@ -67,6 +67,24 @@
 		var room = new THREE.Mesh(geometry, materials);
 		room.position.y = 3;
 		scene.add(room);
+		
+		var loader = new THREE.GLTFLoader();
+		loader.load('models/sofa.glb', function (gltf) {
+			mesh5 = gltf.scene;
+			mesh5.scale.set(0.1, 0.1, 0.1);
+			mesh5.position.set(2, 0.6, -2)
+			scene.add(mesh5);
+		},
+			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
+			function (error) { console.log('An error happened'); }
+		);
+		
+		
+		
+		
+		
+		
+		
 
 		var loader = new THREE.TextureLoader();
 		var picGeometry = new THREE.PlaneGeometry(1, 0.5);
