@@ -73,8 +73,8 @@
 		// sofa
 		loader.load('models/sofa.glb', function (gltf) {
 			sofa = gltf.scene;
-			sofa.scale.set(0.05, 0.05, 0.05);
-			sofa.position.set(1, -3, 1)
+			sofa.scale.set(0.04, 0.04, 0.04);
+			sofa.position.set(-2, -3, -3)
 			sofa.rotation.y = - Math.PI / 2;
 			room.add(sofa);
 		},
@@ -86,7 +86,7 @@
 		loader.load('models/table.glb', function (gltf) {
 			table = gltf.scene;
 			table.scale.set(0.03, 0.03, 0.03);
-			table.position.set(0, -3, 0)
+			table.position.set(3, -3, -2)
 			table.rotation.y = - Math.PI / 2;
 			room.add(table);
 		},
