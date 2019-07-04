@@ -86,8 +86,8 @@
 		loader.load('models/table.glb', function (gltf) {
 			table = gltf.scene;
 			table.scale.set(0.03, 0.03, 0.03);
-			table.position.set(3, -3, -2)
-			table.rotation.y = - Math.PI / 2;
+			table.position.set(3, -3, 2)
+			table.rotation.y = - Math.PI ;
 			room.add(table);
 		},
 			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
