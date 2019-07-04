@@ -1,0 +1,102 @@
+<html>
+
+<head>
+	<title>My first three.js app</title>
+	<style>
+		body {
+			margin: 0;
+		}
+
+		canvas {
+			width: 100%;
+			height: 100%
+		}
+	</style>
+	<script src="https://threejs.org/build/three.min.js"></script>
+	<script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+	<script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
+</head>
+
+<body>
+	<script>
+
+		var renderer = new THREE.WebGLRenderer();
+		renderer.setSize(window.innerWidth, window.innerHeight);
+		document.body.appendChild(renderer.domElement);
+
+		var scene = new THREE.Scene();
+		scene.background = new THREE.Color(0x505050);
+
+		var camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 100);
+
+		var controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+		scene.add(new THREE.HemisphereLight(0x606060, 0x404040));
+		var light = new THREE.DirectionalLight(0xffffff);
+		light.position.set(4, 3, 3).normalize();
+		scene.add(light);
+
+		var geometry = new THREE.BoxGeometry(8, 6, 6);
+
+		var loader = new THREE.TextureLoader();
+
+		var textureW = loader.load('pic/wallpaper.jpg');
+		textureW.wrapS = THREE.RepeatWrapping;
+		textureW.wrapT = THREE.RepeatWrapping;
+		textureW.repeat.set(4, 4);
+
+		var textureF = loader.load('pic/wallpaper.jpg');
+		textureF.wrapS = THREE.RepeatWrapping;
+		textureF.wrapT = THREE.RepeatWrapping;
+		textureF.repeat.set(4, 4);
+
+		var textureC = loader.load('pic/wallpaper.jpg');
+		textureC.wrapS = THREE.RepeatWrapping;
+		textureC.wrapT = THREE.RepeatWrapping;
+		textureC.repeat.set(4, 4);
+
+		var materials = [
+			new THREE.MeshBasicMaterial({map: textureW, side: THREE.BackSide}),
+			new THREE.MeshBasicMaterial({map: textureW, side: THREE.BackSide}),
+			new THREE.MeshBasicMaterial({map: textureW, side: THREE.BackSide}),
+			new THREE.MeshBasicMaterial({map: textureW, side: THREE.BackSide}),
+			new THREE.MeshBasicMaterial({map: textureF, side: THREE.BackSide}),
+			new THREE.MeshBasicMaterial({map: textureC, side: THREE.BackSide}),
+		];
+
+		var room = new THREE.Mesh(geometry, materials);
+		room.position.y = 3;
+		scene.add(room);
+
+		var loader = new THREE.TextureLoader();
+		var picGeometry = new THREE.PlaneGeometry(1, 0.5);
+		var picMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://raw.githubusercontent.com/acossack/test/master/nastja.jpg'), side: THREE.DoubleSide });
+		var pic = new THREE.Mesh(picGeometry, picMaterial);
+		pic.rotation.y = -0.5 * Math.PI;
+		pic.position.set(3.99, 1, 0);
+		room.add(pic);
+
+		var pic2 = new THREE.Mesh(picGeometry, picMaterial);
+		pic2.position.set(0, 0, -2.99);
+		room.add(pic2);
+
+
+		//controls.update() must be called after any manual changes to the camera's transform
+		camera.position.set(0, 7, 7);
+		controls.update();
+
+		function animate() {
+
+			requestAnimationFrame(animate);
+
+			// required if controls.enableDamping or controls.autoRotate are set to true
+			controls.update();
+
+			renderer.render(scene, camera);
+		}
+		animate();
+
+	</script>
+</body>
+
+</html>
