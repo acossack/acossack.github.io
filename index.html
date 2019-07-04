@@ -45,15 +45,15 @@
 		textureW.wrapT = THREE.RepeatWrapping;
 		textureW.repeat.set(4, 4);
 
-		var textureF = loader.load('pic/wallpaper.jpg');
+		var textureF = loader.load('pic/floor.jpg');
 		textureF.wrapS = THREE.RepeatWrapping;
 		textureF.wrapT = THREE.RepeatWrapping;
-		textureF.repeat.set(4, 4);
+		textureF.repeat.set(3, 2);
 
-		var textureC = loader.load('pic/wallpaper.jpg');
+		var textureC = loader.load('pic/ceiling.jpg');
 		textureC.wrapS = THREE.RepeatWrapping;
 		textureC.wrapT = THREE.RepeatWrapping;
-		textureC.repeat.set(4, 4);
+		textureC.repeat.set(3, 2);
 
 		var materials = [
 			new THREE.MeshBasicMaterial({map: textureW, side: THREE.BackSide}),
