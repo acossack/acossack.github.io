@@ -70,10 +70,10 @@
 		
 		var loader = new THREE.GLTFLoader();
 		loader.load('models/sofa.glb', function (gltf) {
-			mesh5 = gltf.scene;
-			mesh5.scale.set(0.1, 0.1, 0.1);
-			mesh5.position.set(2, 0.6, -2)
-			scene.add(mesh5);
+			sofa = gltf.scene;
+			sofa.scale.set(0.03, 0.03, 0.03);
+			sofa.position.set(1, 0, 1)
+			room.add(sofa);
 		},
 			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
 			function (error) { console.log('An error happened'); }
