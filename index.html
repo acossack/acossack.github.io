@@ -75,6 +75,7 @@
 			sofa = gltf.scene;
 			sofa.scale.set(0.03, 0.03, 0.03);
 			sofa.position.set(1, 0, 1)
+			sofa.rotation.y = Math.PI / 2;
 			room.add(sofa);
 		},
 			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
@@ -83,11 +84,10 @@
 		
 		// table
 		loader.load('models/table.glb', function (gltf) {
-			sofa = gltf.scene;
-			sofa.scale.set(0.03, 0.03, 0.03);
-			sofa.position.set(0, 0, 0)
-			sifa.rotation.y = Math.PI / 2;
-			room.add(sofa);
+			table = gltf.scene;
+			table.scale.set(0.03, 0.03, 0.03);
+			table.position.set(0, 0, 0)
+			room.add(table);
 		},
 			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
 			function (error) { console.log('An error happened'); }
