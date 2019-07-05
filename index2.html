@@ -31,19 +31,6 @@
 		camera.add(crosshair);
 
 
-		var geometry = new THREE.BoxGeometry(8, 6, 6);
-		// var materialArray = [];
-		// materialArray.push(new THREE.MeshBasicMaterial({ color: 0xee0000, side: THREE.BackSide, opacity: 0.2 }));
-		// materialArray.push(new THREE.MeshBasicMaterial({ color: 0x00ee00, side: THREE.BackSide, opacity: 0.2 }));
-		// materialArray.push(new THREE.MeshBasicMaterial({ color: 0x0000ee, side: THREE.BackSide, opacity: 0.2 }));
-		// materialArray.push(new THREE.MeshBasicMaterial({ color: 0xeeee00, side: THREE.BackSide, opacity: 0.2 }));
-		// materialArray.push(new THREE.MeshBasicMaterial({ color: 0x00eeee, side: THREE.BackSide, opacity: 0.2 }));
-		// materialArray.push(new THREE.MeshBasicMaterial({ color: 0xee00ee, side: THREE.BackSide, opacity: 0.2 }));
-		// var room = new THREE.Mesh(geometry, materialArray);
-		// room.position.y = 3;
-		// scene.add(room);
-
-
 		scene.add(new THREE.HemisphereLight(0x606060, 0x404040));
 
 
@@ -51,6 +38,8 @@
 		light.position.set(4, 3, 3).normalize();
 		scene.add(light);
 
+		
+		var geometry = new THREE.BoxGeometry(8, 6, 6);
 
 		var loader = new THREE.TextureLoader();
 
@@ -90,7 +79,7 @@
 		loader.load('models/sofa.glb', function (gltf) {
 			sofa = gltf.scene;
 			sofa.scale.set(0.04, 0.04, 0.04);
-			sofa.position.set(-2, -3, -3)
+			sofa.position.set(-2, 0, -3)
 			sofa.rotation.y = - Math.PI / 2;
 			scene.add(sofa);
 		},
@@ -102,7 +91,7 @@
 		loader.load('models/table.glb', function (gltf) {
 			table = gltf.scene;
 			table.scale.set(0.03, 0.03, 0.03);
-			table.position.set(2.5, -3, 2.5)
+			table.position.set(2.5, 0, 2.5)
 			table.rotation.y = - Math.PI ;
 			scene.add(table);
 		},
