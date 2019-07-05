@@ -61,12 +61,12 @@
 		textureC.repeat.set(3, 2);
 
 		var materials = [
-			new THREE.MeshBasicMaterial({map: textureW, side: THREE.BackSide}),
-			new THREE.MeshBasicMaterial({map: textureW, side: THREE.BackSide}),
+			new THREE.MeshBasicMaterial({map: textureWS, side: THREE.BackSide}),
+			new THREE.MeshBasicMaterial({map: textureWL, side: THREE.BackSide}),
 			new THREE.MeshBasicMaterial({map: textureC, side: THREE.BackSide}),
 			new THREE.MeshBasicMaterial({map: textureF, side: THREE.BackSide}),
-			new THREE.MeshBasicMaterial({map: textureW, side: THREE.BackSide}),
-			new THREE.MeshBasicMaterial({map: textureW, side: THREE.BackSide}),
+			new THREE.MeshBasicMaterial({map: textureWS, side: THREE.BackSide}),
+			new THREE.MeshBasicMaterial({map: textureWL, side: THREE.BackSide}),
 		];
 
 		var room = new THREE.Mesh(geometry, materials);
