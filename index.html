@@ -76,7 +76,7 @@
 			sofa.scale.set(0.04, 0.04, 0.04);
 			sofa.position.set(-2, 0, -3)
 			sofa.rotation.y = - Math.PI / 2;
-			scena.add(sofa);
+			scene.add(sofa);
 		},
 			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
 			function (error) { console.log('An error happened'); }
@@ -88,7 +88,7 @@
 			table.scale.set(0.03, 0.03, 0.03);
 			table.position.set(2.5, 0, 2.5)
 			table.rotation.y = - Math.PI ;
-			scena.add(table);
+			scene.add(table);
 		},
 			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
 			function (error) { console.log('An error happened'); }
