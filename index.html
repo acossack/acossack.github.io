@@ -40,10 +40,15 @@
 
 		var loader = new THREE.TextureLoader();
 
-		var textureW = loader.load('pic/wallpaper.jpg');
-		textureW.wrapS = THREE.RepeatWrapping;
-		textureW.wrapT = THREE.RepeatWrapping;
-		textureW.repeat.set(8, 8);
+		var textureWS = loader.load('pic/wallpaper.jpg');
+		textureWS.wrapS = THREE.RepeatWrapping;
+		textureWS.wrapT = THREE.RepeatWrapping;
+		textureWS.repeat.set(3, 3);
+		
+		var textureWL = loader.load('pic/wallpaper.jpg');
+		textureWL.wrapS = THREE.RepeatWrapping;
+		textureWL.wrapT = THREE.RepeatWrapping;
+		textureWL.repeat.set(4, 3);
 
 		var textureF = loader.load('pic/floor.jpg');
 		textureF.wrapS = THREE.RepeatWrapping;
