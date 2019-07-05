@@ -147,13 +147,15 @@ scene.add(user);
 
 		function animate() {
 			renderer.setAnimationLoop(render);
-			user.position.setZ(camera_z_pos);
-			camera_z_pos -= current_velocity;
 		}
 		animate();
 
 		var INTERSECTED;
 		function render() {
+			
+			user.position.setZ(camera_z_pos);
+			camera_z_pos -= current_velocity;
+			
 			raycaster.setFromCamera({ x: 0, y: 0 }, camera);
 			var intersects = raycaster.intersectObjects(room.children, true);
 			if (intersects.length > 0) {
