@@ -14,7 +14,7 @@
 	</style>
 	<script src="https://threejs.org/build/three.min.js"></script>
 	<script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
-	<script src="js/GLTFLoader.js"></script>
+	<script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
 </head>
 
 <body>
@@ -102,7 +102,7 @@
 		
 		
 
-		var loader1 = new THREE.TextureLoader();
+		var loader = new THREE.TextureLoader();
 		
 		var doorGeometry = new THREE.PlaneGeometry(2.6, 1);
 		var doorMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/door.jpg'), side: THREE.DoubleSide });
