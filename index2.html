@@ -7,9 +7,10 @@
 <!-- <meta http-equiv="origin-trial" data-feature="WebXR Device API" data-expires="2019-08-16" content="AvXi+ZLENrqNfE9kA+h4NxnrYDUw9HX5w+SO3WMOdMJe8OET4IiQNzMXUyITqX5qEKSA2o6hCll/WycT1Oq25gIAAABaeyJvcmlnaW4iOiJodHRwczovL2Fjb3NzYWNrLmdpdGh1Yi5pbzo0NDMiLCJmZWF0dXJlIjoiV2ViWFJEZXZpY2VNNzYiLCJleHBpcnkiOjE1NjU5NDU3NDl9"> -->
 
 <script src="https://threejs.org/build/three.min.js"></script>
+<script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
 <script src="https://threejs.org/examples/js/vr/HelioWebXRPolyfill.js"></script>
 <script src="https://threejs.org/examples/js/vr/WebVR.js"></script>
-<script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
+
 
 <body>
 	<script>
@@ -67,6 +68,7 @@
 
 		
 		var room = new THREE.Mesh(geometry, materials);
+		room.position.y = 3;
 		scene.add(room);
 		
 		var loader = new THREE.GLTFLoader();
@@ -75,7 +77,7 @@
 		loader.load('https://acossack.github.io/mod/sofa.glb', function (gltf) {
 			sofa = gltf.scene;
 			sofa.scale.set(0.05, 0.05, 0.05);
-			sofa.position.set(-2, -3, -3)
+			sofa.position.set(-2, 0, -3)
 			sofa.rotation.y = - Math.PI / 2;
 			scene.add(sofa);
 		},
@@ -87,7 +89,7 @@
 		loader.load('https://acossack.github.io/mod/table.glb', function (gltf) {
 			table = gltf.scene;
 			table.scale.set(0.04, 0.04, 0.04);
-			table.position.set(0, -3, 2.5)
+			table.position.set(0, 0, 2.5)
 			table.rotation.y = - Math.PI ;
 			scene.add(table);
 		},
@@ -102,7 +104,7 @@
 		var doorMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/door.jpg'), side: THREE.BackSide });
 		var door = new THREE.Mesh(doorGeometry, doorMaterial);
 		door.rotation.y = -0.5 * Math.PI;
-		door.position.set(-3.99, -1, 0);
+		door.position.set(-3.99, 2, 0);
 		scene.add(door);
 		
 		// window
@@ -110,7 +112,7 @@
 		var myWindowMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/window.jpg'), side: THREE.FrontSide });
 		var myWindow = new THREE.Mesh(myWindowGeometry, myWindowMaterial);
 		myWindow.rotation.y = -0.5 * Math.PI;
-		myWindow.position.set(3.99, 0.4, 0);
+		myWindow.position.set(3.99, 3.4, 0);
 		scene.add(myWindow);
 
 		
@@ -121,7 +123,6 @@
 		renderer.setPixelRatio(window.devicePixelRatio);
 		renderer.setSize(window.innerWidth, window.innerHeight);
 		renderer.vr.enabled = true;
-		renderer.vr.userHeight = 0;
 		window.addEventListener('resize', onWindowResize, false);
 		document.body.appendChild(renderer.domElement);
 		document.body.appendChild(WEBVR.createButton(renderer));
