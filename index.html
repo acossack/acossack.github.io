@@ -107,8 +107,8 @@
 		var doorGeometry = new THREE.PlaneGeometry(2.6, 1);
 		var doorMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/door.jpg'), side: THREE.DoubleSide });
 		var door = new THREE.Mesh(doorGeometry, doorMaterial);
-		myWindow.rotation.z = -0.5 * Math.PI;
-		myWindow.rotation.y = -0.5 * Math.PI;
+		door.rotation.z = -0.5 * Math.PI;
+		door.rotation.y = -0.5 * Math.PI;
 		door.position.set(1, 1, 0);
 		scene.add(door);
 		
