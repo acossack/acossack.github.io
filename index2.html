@@ -121,7 +121,7 @@
 		renderer.setPixelRatio(window.devicePixelRatio);
 		renderer.setSize(window.innerWidth, window.innerHeight);
 		renderer.vr.enabled = true;
-		renderer.vr.userHeight = 4;
+		renderer.vr.userHeight = 2;
 		window.addEventListener('resize', onWindowResize, false);
 		document.body.appendChild(renderer.domElement);
 		document.body.appendChild(WEBVR.createButton(renderer));
