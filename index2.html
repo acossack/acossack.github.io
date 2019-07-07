@@ -116,16 +116,16 @@
 
 
 		var loader = new THREE.TextureLoader();
-		var picGeometry = new THREE.PlaneGeometry(2, 2);
+		var picGeometry = new THREE.PlaneGeometry(2, 1.8);
 		var picMaterial = new THREE.MeshLambertMaterial({map: loader.load('https://acossack.github.io/pic/window.jpg'), side: THREE.DoubleSide});
 		var pic = new THREE.Mesh( picGeometry, picMaterial );
 		pic.rotation.y = -0.5 * Math.PI;
 		pic.position.set(3.99, 1, 0);
 		room.add(pic);
 
-// 		var pic2 = new THREE.Mesh( picGeometry, picMaterial );
-// 		pic2.position.set(0, 0, -2.99);
-// 		room.add(pic2);
+		var pic2 = new THREE.Mesh( picGeometry, picMaterial );
+		pic2.position.set(0, 0, -2.99);
+		room.add(pic2);
 
 		
 		
