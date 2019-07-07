@@ -107,27 +107,40 @@
 		
 		
 
-		var loader1 = new THREE.TextureLoader();
+// 		var loader1 = new THREE.TextureLoader();
 		
-		var doorGeometry = new THREE.PlaneGeometry(2.6, 1);
-		var doorMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/door.jpg'), side: THREE.DoubleSide });
-		var door = new THREE.Mesh(doorGeometry, doorMaterial);
-		door.position.set(3.99, 1, 0);
-		scene.add(door);
+// 		var doorGeometry = new THREE.PlaneGeometry(2.6, 1);
+// 		var doorMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/door.jpg'), side: THREE.DoubleSide });
+// 		var door = new THREE.Mesh(doorGeometry, doorMaterial);
+// 		door.position.set(3.99, 1, 0);
+// 		scene.add(door);
+		
+// // 		var windowGeometry = new THREE.PlaneGeometry(0.98, 0.82);
+// // 		var windowMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/window.jpg'), side: THREE.DoubleSide });
+// // 		var window = new THREE.Mesh(windowGeometry, windowMaterial);
+// // 		window.rotation.y = -0.5 * Math.PI;
+// // 		window.position.set(0, 0, -2.99);
+// // 		room.add(window);
+// 		var loader2 = new THREE.TextureLoader();
 		
 // 		var windowGeometry = new THREE.PlaneGeometry(0.98, 0.82);
-// 		var windowMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/window.jpg'), side: THREE.DoubleSide });
+// 		var windowMaterial = new THREE.MeshLambertMaterial({ map: loader2.load('pic/window.jpg'), side: THREE.DoubleSide });
 // 		var window = new THREE.Mesh(windowGeometry, windowMaterial);
-// 		window.rotation.y = -0.5 * Math.PI;
-// 		window.position.set(0, 0, -2.99);
-// 		room.add(window);
-		var loader2 = new THREE.TextureLoader();
+// 		window.position.set(3.99, 1, 0);
+// 		scene.add(window);
 		
-		var windowGeometry = new THREE.PlaneGeometry(0.98, 0.82);
-		var windowMaterial = new THREE.MeshLambertMaterial({ map: loader2.load('pic/window.jpg'), side: THREE.DoubleSide });
-		var window = new THREE.Mesh(windowGeometry, windowMaterial);
-		window.position.set(3.99, 1, 0);
-		scene.add(window);
+		
+		var loader = new THREE.TextureLoader();
+		var picGeometry = new THREE.PlaneGeometry(1, 0.5);
+		var picMaterial = new THREE.MeshLambertMaterial({map: loader.load('pic/window.jpg'), side: THREE.DoubleSide});
+		var pic = new THREE.Mesh( picGeometry, picMaterial );
+		pic.rotation.y = -0.5 * Math.PI;
+		pic.position.set(3.99, 1, 0);
+		room.add(pic);
+
+		var pic2 = new THREE.Mesh( picGeometry, picMaterial );
+		pic2.position.set(0, 0, -2.99);
+		room.add(pic2);
 
 		
 		
