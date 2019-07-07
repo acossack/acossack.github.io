@@ -31,9 +31,12 @@
 
 		var controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-		scene.add(new THREE.HemisphereLight(0x606060, 0x404040));
-		var light = new THREE.DirectionalLight(0xffffff);
-		light.position.set(4, 3, 3).normalize();
+// 		scene.add(new THREE.HemisphereLight(0x606060, 0x404040));
+// 		var light = new THREE.DirectionalLight(0xffffff);
+// 		light.position.set(4, 3, 3).normalize();
+// 		scene.add(light);
+		
+		var light = new THREE.AmbientLight(0xffffff);
 		scene.add(light);
 
 		var geometry = new THREE.BoxGeometry(8, 6, 6);
@@ -104,7 +107,7 @@
 		
 		
 
-		var loader = new THREE.TextureLoader();
+		var loader1 = new THREE.TextureLoader();
 		
 		var doorGeometry = new THREE.PlaneGeometry(2.6, 1);
 		var doorMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/door.jpg'), side: THREE.DoubleSide });
@@ -118,9 +121,10 @@
 // 		window.rotation.y = -0.5 * Math.PI;
 // 		window.position.set(0, 0, -2.99);
 // 		room.add(window);
+		var loader2 = new THREE.TextureLoader();
 		
-		var windowGeometry = new THREE.PlaneGeometry(2.6, 1);
-		var windowMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/window.jpg'), side: THREE.DoubleSide });
+		var windowGeometry = new THREE.PlaneGeometry(0.98, 0.82);
+		var windowMaterial = new THREE.MeshLambertMaterial({ map: loader2.load('pic/window.jpg'), side: THREE.DoubleSide });
 		var window = new THREE.Mesh(windowGeometry, windowMaterial);
 		window.position.set(3.99, 1, 0);
 		scene.add(window);
