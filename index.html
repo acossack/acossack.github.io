@@ -116,7 +116,7 @@
 		var windowGeometry = new THREE.PlaneGeometry(0.98, 0.82);
 		var windowMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/window.jpg'), side: THREE.DoubleSide });
 		var window = new THREE.Mesh(windowGeometry, windowMaterial);
-		window.rotation.y = -0.5 * Math.PI;
+		//window.rotation.y = -0.5 * Math.PI;
 		window.position.set(0, 0, -2.99);
 		scene.add(window);
 
