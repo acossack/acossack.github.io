@@ -291,20 +291,21 @@
 // 					let scaX = INTERSECTED.scale.x;
 // 					let scaY = INTERSECTED.scale.y;
 // 					let scaZ = INTERSECTED.scale.Z;
-// 					if (INTERSECTED) {
-// 						INTERSECTED.scale.x = 1;
-// 						INTERSECTED.scale.y = 1;
-// 						INTERSECTED.position.z = 2.99
-// 					}
+					if (INTERSECTED) {
+						INTERSECTED.scale.x = 1;
+						INTERSECTED.scale.y = 1;
+						INTERSECTED.position.z = 2.99
+					}
 					INTERSECTED = intersects[0].object;
 					INTERSECTED.scale.x = 2;
 					INTERSECTED.scale.y = 2;
 					INTERSECTED.position.z = 1;
 				}
-			} else {
-				if (INTERSECTED) {INTERSECTED.scale.x = scaX; INTERSECTED.scale.y = scaY; INTERSECTED.position.z = posZ}
-				INTERSECTED = undefined;
 			}
+// 			} else {
+// 				if (INTERSECTED) {INTERSECTED.scale.x = scaX; INTERSECTED.scale.y = scaY; INTERSECTED.position.z = posZ}
+// 				INTERSECTED = undefined;
+// 			}
 
 			renderer.render(scene, camera);
 		}
