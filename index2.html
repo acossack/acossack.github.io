@@ -252,6 +252,7 @@
 		var hackerrankMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/1.png'), side: THREE.BothSide });
 		var hackerrank = new THREE.Mesh(hackerrankGeometry, hackerrankMaterial);
 		hackerrank.position.set(2, 1, -2.99);
+		hackerrank.name = 'hackerrank';
 		room.add(hackerrank);
 		
 		// hackerrank2
@@ -259,6 +260,7 @@
 		var hackerrank2Material = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/2.png'), side: THREE.BothSide });
 		var hackerrank2 = new THREE.Mesh(hackerrank2Geometry, hackerrank2Material);
 		hackerrank2.position.set(-2, 1, -2.99);
+		hackerrank2.name = 'hackerrank2';
 		room.add(hackerrank2);
 
 
@@ -292,6 +294,7 @@
 		
 		var INTERSECTED;
 		var currentScaleX = 1;
+		var currentScaleY = 1;
 		function render() {
 			raycaster.setFromCamera({ x: 0, y: 0 }, camera);
 			var intersects = raycaster.intersectObjects(room.children, true);
@@ -302,38 +305,22 @@
 			if ( intersects.length > 0 ) {
 				if ( INTERSECTED != intersects[ 0 ].object ) {
 					if ( INTERSECTED ) {
-						INTERSECTED.scale.x = INTERSECTED.currentScale.x;
+						(INTERSECTED.name == 'hackerrank') ? INTERSECTED.scale.x = INTERSECTED.currentScale.x : INTERSECTED.scale.y = INTERSECTED.currentScale.y;
 					}
 					INTERSECTED = intersects[ 0 ].object;
 					currentScaleX = INTERSECTED.scale.getComponent(0);
-					INTERSECTED.scale.x = 2;
+					currentScaleY = INTERSECTED.scale.getComponent(1);
+					(INTERSECTED.name == 'hackerrank') ? INTERSECTED.scale.x = 2 : INTERSECTED.scale.y = 2;
 				}
 			} else {	
 				if ( INTERSECTED ) {
-					INTERSECTED.scale.x = currentScaleX;
+					(INTERSECTED.name == 'hackerrank') ? INTERSECTED.scale.x = INTERSECTED.currentScale.x : INTERSECTED.scale.y = INTERSECTED.currentScale.y;
 				}
 				INTERSECTED = null;
 				}
 			
 			
-			
-			
-// 			if ( intersects.length > 0 ) {
-// 				if ( INTERSECTED != intersects[ 0 ].object ) {
-// 					if ( INTERSECTED ) {
-// 						INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-// 					}
-// 					INTERSECTED = intersects[ 0 ].object;
-// 					INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
-// 					INTERSECTED.material.emissive.setHex( 0xff0000 );
-// 				}
-// 			} else {	
-// 				if ( INTERSECTED ) {
-// 					INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-// 				}
-// 				INTERSECTED = null;
-// 				}
-			
+		
 
 			renderer.render(scene, camera);
 		}
