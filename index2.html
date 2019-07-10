@@ -142,7 +142,18 @@
 		scene.add(myWindow);
 
 		
+		
+		
+		// hackerrank
+		var myWindowGeometry = new THREE.PlaneGeometry(0.5, 1);
+		var myWindowMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/1.bmp'), side: THREE.FrontSide });
+		var myWindow = new THREE.Mesh(myWindowGeometry, myWindowMaterial);
+		myWindow.rotation.y = -0.5 * Math.PI;
+		myWindow.position.set(0, 0, 2);
+		room.add(myWindow);
 
+		
+		
 		var raycaster = new THREE.Raycaster();
 		var renderer = new THREE.WebGLRenderer({ antialias: true });
 		renderer.setPixelRatio(window.devicePixelRatio);
