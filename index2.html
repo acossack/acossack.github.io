@@ -74,17 +74,17 @@
 		var loader = new THREE.GLTFLoader();
 		
 		// sofa
-		loader.load('https://acossack.github.io/mod/sofa.glb', function (gltf) {
+		loader.load('https://acossack.github.io/mod/sofa_red.glb', function (gltf) {
 			sofa = gltf.scene;
-			sofa.scale.set(0.05, 0.05, 0.05);
-			sofa.position.set(-2, -1, -3)
+			sofa.scale.set(0.018, 0.018, 0.018);
+			sofa.position.set(2, -1, -2.5)
 			sofa.rotation.y = - Math.PI / 2;
 			scene.add(sofa);
 		},
 			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
 			function (error) { console.log('An error happened'); }
 		);
-		
+
 		// table
 		loader.load('https://acossack.github.io/mod/table.glb', function (gltf) {
 			table = gltf.scene;
@@ -165,7 +165,7 @@
 		loader.load('https://acossack.github.io/mod/mug.glb', function (gltf) {
 			mug = gltf.scene;
 			mug.scale.set(0.05, 0.05, 0.05);
-			mug.position.set(0.5,-0.65, 2)
+			mug.position.set(0.5, -0.65, 2)
 			mug.rotation.y = - Math.PI / 2;
 			scene.add(mug);
 		},
@@ -178,7 +178,7 @@
 		loader.load('https://acossack.github.io/mod/books.glb', function (gltf) {
 			books = gltf.scene;
 			books.scale.set(1, 1, 1);
-			books.position.set(-3, 2, 2.75)
+			books.position.set(-3, 1.5, 2.75)
 			scene.add(books);
 		},
 			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
@@ -197,6 +197,17 @@
 			function (error) { console.log('An error happened'); }
 		);
 
+		// furniture
+		loader.load('https://acossack.github.io/mod/furniture.glb', function (gltf) {
+			furniture = gltf.scene;
+			furniture.scale.set(0.02, 0.02, 0.02);
+			furniture.position.set(-2, -1, 2.3)
+			furniture.rotation.y = Math.PI;
+			scene.add(furniture);
+		},
+			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
+			function (error) { console.log('An error happened'); }
+		);
 
 
 
@@ -217,14 +228,15 @@
 		myWindow.rotation.y = -0.5 * Math.PI;
 		myWindow.position.set(3.99, 2.2, 0);
 		scene.add(myWindow);
-		
-		
-		
+
+
+
+
 		// hackerrank
 		var hackerrankGeometry = new THREE.PlaneGeometry(0.5, 1);
 		var hackerrankMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/1.png'), side: THREE.BackSide });
 		var hackerrank = new THREE.Mesh(hackerrankGeometry, hackerrankMaterial);
-		hackerrank.position.set(0, -1, 1.99);
+		hackerrank.position.set(1, 1, 2.99);
 		room.add(hackerrank);
 
 		
