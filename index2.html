@@ -15,7 +15,6 @@
 <body>
 	<script>
 		var scene = new THREE.Scene();
-// 		scene.background = new THREE.Color(0x505050);
 
 
 		var camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 10);
@@ -71,7 +70,7 @@
 		room.position.y = 2;
 		scene.add(room);
 		
-		
+
 		// models
 		var loader = new THREE.GLTFLoader();
 
@@ -255,7 +254,6 @@
 		hackerrank.position.set(1, 1, 2.99);
 		room.add(hackerrank);
 
-
 		
 		
 		var raycaster = new THREE.Raycaster();
@@ -280,26 +278,36 @@
 		}
 		animate();
 
+		
 		var INTERSECTED;
 		function render() {
 			raycaster.setFromCamera({ x: 0, y: 0 }, camera);
 			var intersects = raycaster.intersectObjects(room.children, true);
+			
+			posX = INTERSECTED.position.x;
+			posY = INTERSECTED.position.y;
+			posZ = INTERSECTED.position.z;
+			scaX = INTERSECTED.scale.x;
+			scaY = INTERSECTED.scale.y;
+			scaZ = INTERSECTED.scale.Z;
+			
 			if (intersects.length > 0) {
 				if (INTERSECTED != intersects[0].object) {
-					if (INTERSECTED) {INTERSECTED.scale.x = 1; INTERSECTED.scale.y = 1; INTERSECTED.position.z = 2.99}
+					let posZ = INTERSECTED.position.z;
+				
+					if (INTERSECTED) {INTERSECTED.scale.x = scaX; INTERSECTED.scale.y = scaY; INTERSECTED.position.z = posZ}
 					INTERSECTED = intersects[0].object;
 					INTERSECTED.scale.x = 2;
 					INTERSECTED.scale.y = 2;
 					INTERSECTED.position.z = 1;
 				}
 			} else {
-				if (INTERSECTED) {INTERSECTED.scale.x = 1; INTERSECTED.scale.y = 1; INTERSECTED.position.z = 2.99}
+				if (INTERSECTED) {INTERSECTED.scale.x = scaX; INTERSECTED.scale.y = scaY; INTERSECTED.position.z = posZ}
 				INTERSECTED = undefined;
 			}
 
 			renderer.render(scene, camera);
 		}
-
 	</script>
 </body>
 
