@@ -299,12 +299,12 @@
 			
 						
 			if ( intersects.length > 0 ) {
-				if ( INTERSECTED != intersects[ 0 ] ) {
+				if ( INTERSECTED != intersects[ 0 ].object ) {
 					if ( INTERSECTED ) {
 						INTERSECTED.scale.x = INTERSECTED.currentScale.x;
 					}
-					INTERSECTED = intersects[ 0 ];
-					INTERSECTED.currentScale.x = INTERSECTED.scale.x;
+					INTERSECTED = intersects[ 0 ].object;
+					INTERSECTED.currentScale.x = INTERSECTED.scale.x.get();
 					INTERSECTED.scale.x = 2;
 				}
 			} else {	
