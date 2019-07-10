@@ -224,7 +224,7 @@
 		var hackerrankGeometry = new THREE.PlaneGeometry(0.5, 1);
 		var hackerrankMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/1.png'), side: THREE.BackSide });
 		var hackerrank = new THREE.Mesh(hackerrankGeometry, hackerrankMaterial);
-		hackerrank.position.set(-0.5, -0.5, 1.99);
+		hackerrank.position.set(-0.2, -0.8, 1.99);
 		room.add(hackerrank);
 
 		
@@ -259,8 +259,8 @@
 				if (INTERSECTED != intersects[0].object) {
 					if (INTERSECTED) {INTERSECTED.scale.x = 1; INTERSECTED.scale.y = 1;}
 					INTERSECTED = intersects[0].object;
-					INTERSECTED.scale.x = 2;
-					INTERSECTED.scale.y = 2;
+					INTERSECTED.scale.x = 3;
+					INTERSECTED.scale.y = 3;
 				}
 			} else {
 				if (INTERSECTED) {INTERSECTED.scale.x = 1; INTERSECTED.scale.y = 1;}
