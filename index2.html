@@ -249,14 +249,14 @@
 
 		// hackerrank
 		var hackerrankGeometry = new THREE.PlaneGeometry(1, 1);
-		var hackerrankMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/1.png'), side: THREE.FrontSide });
+		var hackerrankMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/1.png'), side: THREE.BothSide });
 		var hackerrank = new THREE.Mesh(hackerrankGeometry, hackerrankMaterial);
 		hackerrank.position.set(2, 1, -2.99);
 		room.add(hackerrank);
 		
 		// hackerrank2
 		var hackerrank2Geometry = new THREE.PlaneGeometry(1, 1);
-		var hackerrank2Material = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/2.png'), side: THREE.FrontSide });
+		var hackerrank2Material = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/2.png'), side: THREE.BothSide });
 		var hackerrank2 = new THREE.Mesh(hackerrank2Geometry, hackerrank2Material);
 		hackerrank2.position.set(-2, 1, -2.99);
 		room.add(hackerrank2);
@@ -295,17 +295,17 @@
 			raycaster.setFromCamera({ x: 0, y: 0 }, camera);
 			var intersects = raycaster.intersectObjects(room.children, true);
 			
-			if ( intersects.length > 0 ) {
-					if ( INTERSECTED != intersects[ 0 ].object ) {
-						if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-						INTERSECTED = intersects[ 0 ].object;
-						INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
-						INTERSECTED.material.emissive.setHex( 0xff0000 );
-					}
-				} else {
-					if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-					INTERSECTED = null;
-				}
+// 			if ( intersects.length > 0 ) {
+// 					if ( INTERSECTED != intersects[ 0 ].object ) {
+// 						if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+// 						INTERSECTED = intersects[ 0 ].object;
+// 						INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
+// 						INTERSECTED.material.emissive.setHex( 0xff0000 );
+// 					}
+// 				} else {
+// 					if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+// 					INTERSECTED = null;
+// 				}
 			
 			
 	
