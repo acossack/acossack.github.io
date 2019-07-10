@@ -71,15 +71,28 @@
 		room.position.y = 2;
 		scene.add(room);
 		
-		var loader = new THREE.GLTFLoader();
 		
+		// models
+		var loader = new THREE.GLTFLoader();
+
 		// sofa
-		loader.load('https://acossack.github.io/mod/sofa_red.glb', function (gltf) {
+		loader.load('https://acossack.github.io/mod/sofa.glb', function (gltf) {
 			sofa = gltf.scene;
-			sofa.scale.set(0.018, 0.018, 0.018);
-			sofa.position.set(2, -1, -2.5)
+			sofa.scale.set(0.04, 0.04, 0.04);
+			sofa.position.set(0, -1, -1.3)
 			sofa.rotation.y = - Math.PI / 2;
 			scene.add(sofa);
+		},
+			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
+			function (error) { console.log('An error happened'); }
+		);
+
+		// vlamp
+		loader.load('https://acossack.github.io/mod/vlamp.glb', function (gltf) {
+			vlamp = gltf.scene;
+			vlamp.scale.set(0.2, 0.2, 0.2);
+			vlamp.position.set(-3.4, -1, -2.4)
+			scene.add(vlamp);
 		},
 			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
 			function (error) { console.log('An error happened'); }
@@ -97,7 +110,6 @@
 			function (error) { console.log('An error happened'); }
 		);
 
-
 		// chair
 		loader.load('https://acossack.github.io/mod/chair.glb', function (gltf) {
 			chair = gltf.scene;
@@ -105,19 +117,6 @@
 			chair.position.set(2, 0, 1)
 			chair.rotation.y = Math.PI / 10;
 			scene.add(chair);
-		},
-			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
-			function (error) { console.log('An error happened'); }
-		);
-
-
-		// curtains
-		loader.load('https://acossack.github.io/mod/curtains.glb', function (gltf) {
-			curtains = gltf.scene;
-			curtains.scale.set(0.0022, 0.002, 0.002);
-			curtains.position.set(3.5, 3.8, 0)
-			curtains.rotation.y = - Math.PI / 2;
-			scene.add(curtains);
 		},
 			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
 			function (error) { console.log('An error happened'); }
@@ -134,7 +133,6 @@
 			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
 			function (error) { console.log('An error happened'); }
 		);
-
 
 		// lamp
 		loader.load('https://acossack.github.io/mod/lamp.glb', function (gltf) {
@@ -160,7 +158,6 @@
 			function (error) { console.log('An error happened'); }
 		);
 
-
 		// mug
 		loader.load('https://acossack.github.io/mod/mug.glb', function (gltf) {
 			mug = gltf.scene;
@@ -168,18 +165,6 @@
 			mug.position.set(0.5, -0.65, 2)
 			mug.rotation.y = - Math.PI / 2;
 			scene.add(mug);
-		},
-			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
-			function (error) { console.log('An error happened'); }
-		);
-
-
-		// books
-		loader.load('https://acossack.github.io/mod/books.glb', function (gltf) {
-			books = gltf.scene;
-			books.scale.set(1, 1, 1);
-			books.position.set(-3, 1.5, 2.75)
-			scene.add(books);
 		},
 			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
 			function (error) { console.log('An error happened'); }
@@ -209,8 +194,42 @@
 			function (error) { console.log('An error happened'); }
 		);
 
+		// flowers
+		loader.load('https://acossack.github.io/mod/flowers.glb', function (gltf) {
+			flowers = gltf.scene;
+			flowers.scale.set(0.02, 0.02, 0.02);
+			flowers.position.set(-1.3, -0.25, 2.6)
+			flowers.rotation.y = Math.PI / 4;
+			scene.add(flowers);
+		},
+			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
+			function (error) { console.log('An error happened'); }
+		);
 
+		// books
+		loader.load('https://acossack.github.io/mod/books.glb', function (gltf) {
+			books = gltf.scene;
+			books.scale.set(1, 1, 1);
+			books.position.set(-3, 1.5, 2.75)
+			scene.add(books);
+		},
+			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
+			function (error) { console.log('An error happened'); }
+		);
 
+		// curtains
+		loader.load('https://acossack.github.io/mod/curtains.glb', function (gltf) {
+			curtains = gltf.scene;
+			curtains.scale.set(0.0022, 0.002, 0.002);
+			curtains.position.set(3.5, 3.8, 0)
+			curtains.rotation.y = - Math.PI / 2;
+			scene.add(curtains);
+		},
+			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
+			function (error) { console.log('An error happened'); }
+		);
+
+		// textures
 		var loader = new THREE.TextureLoader();
 
 		// door
@@ -229,15 +248,13 @@
 		myWindow.position.set(3.99, 2.2, 0);
 		scene.add(myWindow);
 
-
-
-
 		// hackerrank
 		var hackerrankGeometry = new THREE.PlaneGeometry(0.5, 1);
 		var hackerrankMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/1.png'), side: THREE.BackSide });
 		var hackerrank = new THREE.Mesh(hackerrankGeometry, hackerrankMaterial);
 		hackerrank.position.set(1, 1, 2.99);
 		room.add(hackerrank);
+
 
 		
 		
