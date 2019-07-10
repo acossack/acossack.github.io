@@ -285,14 +285,13 @@
 			var intersects = raycaster.intersectObjects(room.children, true);
 			if (intersects.length > 0) {
 				if (INTERSECTED != intersects[0].object) {
-					let posX = INTERSECTED.position.x;
-					let posY = INTERSECTED.position.y;
-					let posZ = INTERSECTED.position.z;
-					let scaX = INTERSECTED.scale.x;
-					let scaY = INTERSECTED.scale.y;
-					let scaZ = INTERSECTED.scale.Z;
-				
-					if (INTERSECTED) {INTERSECTED.scale.x = scaX; INTERSECTED.scale.y = scaY; INTERSECTED.position.z = posZ}
+// 					let posX = INTERSECTED.position.x;
+// 					let posY = INTERSECTED.position.y;
+// 					let posZ = INTERSECTED.position.z;
+// 					let scaX = INTERSECTED.scale.x;
+// 					let scaY = INTERSECTED.scale.y;
+// 					let scaZ = INTERSECTED.scale.Z;
+					if (INTERSECTED) {INTERSECTED.scale.x = 1; INTERSECTED.scale.y = 1; INTERSECTED.position.z = 2.99}
 					INTERSECTED = intersects[0].object;
 					INTERSECTED.scale.x = 2;
 					INTERSECTED.scale.y = 2;
