@@ -295,35 +295,41 @@
 			raycaster.setFromCamera({ x: 0, y: 0 }, camera);
 			var intersects = raycaster.intersectObjects(room.children, true);
 			if (intersects.length > 0) {
-				if (INTERSECTED != intersects[0].object) {
-					if (INTERSECTED) {
-						INTERSECTED.scale.x = 1;
-						INTERSECTED.scale.y = 1;
-// 						INTERSECTED.position.x = 2;
-// 						INTERSECTED.position.y = 1;
-// 						INTERSECTED.position.z =  2.99;
-// 						INTERSECTED.rotation.y = 0;
-						
-					}
-					INTERSECTED = intersects[0].object;
-					INTERSECTED.scale.x = 2;
-					INTERSECTED.scale.y = 2;
-// 					INTERSECTED.position.x = 1;
-// 					INTERSECTED.position.y = 0;
-// 					INTERSECTED.position.z = 1;
-// 					INTERSECTED.rotation.y = Math.PI / 4;
-				}
+				INTERSECTED = intersects[0];
+				INTERSECTED.scale.x = 2;
+ 				INTERSECTED.scale.y = 2;
 			} else {
-				if (INTERSECTED) {
-					INTERSECTED.scale.x = 1;
-					INTERSECTED.scale.y = 1;
-// 					INTERSECTED.position.x = 2;
-// 					INTERSECTED.position.y = 1;
-// 					INTERSECTED.position.z = 2.99
-// 					INTERSECTED.rotation.y = 0;
-				}
-				INTERSECTED = undefined;
+				INTERSECTED.scale.x = 1;
+ 				INTERSECTED.scale.y = 1;
 			}
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+// 			if (intersects.length > 0) {
+// 				if (INTERSECTED != intersects[0].object) {
+// 					if (INTERSECTED) {
+// 						INTERSECTED.scale.x = 1;
+// 						INTERSECTED.scale.y = 1;
+						
+// 					}
+// 					INTERSECTED = intersects[0].object;
+// 					INTERSECTED.scale.x = 2;
+// 					INTERSECTED.scale.y = 2;
+// 				}
+// 			} else {
+// 				if (INTERSECTED) {
+// 					INTERSECTED.scale.x = 1;
+// 					INTERSECTED.scale.y = 1;
+// 				}
+// 				INTERSECTED = undefined;
+// 			}
 
 			renderer.render(scene, camera);
 		}
