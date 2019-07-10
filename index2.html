@@ -68,7 +68,7 @@
 
 		
 		var room = new THREE.Mesh(geometry, materials);
-		room.position.y = 2;
+		room.position.y = 3;
 		scene.add(room);
 		
 		var loader = new THREE.GLTFLoader();
@@ -89,7 +89,7 @@
 		loader.load('https://acossack.github.io/mod/table.glb', function (gltf) {
 			table = gltf.scene;
 			table.scale.set(0.04, 0.05, 0.04);
-			table.position.set(1.5, 0, 2.4)
+			table.position.set(1.5, 1, 2.4)
 			table.rotation.y = - Math.PI;
 			scene.add(table);
 		},
