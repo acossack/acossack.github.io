@@ -305,7 +305,7 @@
 			if ( intersects.length > 0 ) {
 				if ( INTERSECTED != intersects[ 0 ].object ) {
 					if ( INTERSECTED ) {
-						(INTERSECTED.name == 'hackerrank') ? INTERSECTED.scale.x = INTERSECTED.currentScale.x : INTERSECTED.scale.y = INTERSECTED.currentScale.y;
+						(INTERSECTED.name == 'hackerrank') ? INTERSECTED.scale.x = currentScaleX : INTERSECTED.scale.y = currentScaleY;
 					}
 					INTERSECTED = intersects[ 0 ].object;
 					currentScaleX = INTERSECTED.scale.getComponent(0);
@@ -314,7 +314,7 @@
 				}
 			} else {	
 				if ( INTERSECTED ) {
-					(INTERSECTED.name == 'hackerrank') ? INTERSECTED.scale.x = INTERSECTED.currentScale.x : INTERSECTED.scale.y = INTERSECTED.currentScale.y;
+					(INTERSECTED.name == 'hackerrank') ? INTERSECTED.scale.x = currentScaleX : INTERSECTED.scale.y = currentScaleY;
 				}
 				INTERSECTED = null;
 				}
