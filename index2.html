@@ -251,14 +251,14 @@
 		var hackerrankGeometry = new THREE.PlaneGeometry(1, 1);
 		var hackerrankMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/1.png'), side: THREE.BackSide });
 		var hackerrank = new THREE.Mesh(hackerrankGeometry, hackerrankMaterial);
-		hackerrank.position.set(2, 1, 2.99);
+		hackerrank.position.set(1, 1, -2.99);
 		room.add(hackerrank);
 		
 		// hackerrank2
 		var hackerrank2Geometry = new THREE.PlaneGeometry(1, 1);
 		var hackerrank2Material = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/2.png'), side: THREE.FrontSide });
 		var hackerrank2 = new THREE.Mesh(hackerrank2Geometry, hackerrank2Material);
-		hackerrank2.position.set(0, 1, -2.99);
+		hackerrank2.position.set(-1, 1, -2.99);
 		room.add(hackerrank2);
 
 
@@ -288,9 +288,7 @@
 
 		
 		
-		
-		
-		
+
 		
 		
 		
@@ -298,41 +296,43 @@
 		function render() {
 			raycaster.setFromCamera({ x: 0, y: 0 }, camera);
 			var intersects = raycaster.intersectObjects(room.children, true);
-			for (let i = 0; i < intersects.length; i++) {
-				console.log(intersects[i]);
-			}
-			
-			
-// 			if (intersects.length > 0) {
-// 				if (INTERSECTED != hackerrank2) {
-// 					if (INTERSECTED) {
-// 						INTERSECTED.scale.x = 1;
-// 						INTERSECTED.scale.y = 1;
-// // 						INTERSECTED.position.x = 2;
-// // 						INTERSECTED.position.y = 1;
-// // 						INTERSECTED.position.z =  2.99;
-// // 						INTERSECTED.rotation.y = 0;
+			if (intersects.length > 0) {
+				if (INTERSECTED != intersects[0].object) {
+					if (INTERSECTED ) {
+						INTERSECTED.scale.x = 1;
+						INTERSECTED.scale.y = 1;
+// 						INTERSECTED.position.x = 2;
+// 						INTERSECTED.position.y = 1;
+// 						INTERSECTED.position.z =  2.99;
+// 						INTERSECTED.rotation.y = 0;
 						
-// 					}
-// 					INTERSECTED = hackerrank2;
-// 					INTERSECTED.scale.x = 2;
-// 					INTERSECTED.scale.y = 2;
-// // 					INTERSECTED.position.x = 1;
-// // 					INTERSECTED.position.y = 0;
-// // 					INTERSECTED.position.z = 1;
-// // 					INTERSECTED.rotation.y = Math.PI / 4;
-// 				}
-// 			} else {
-// 				if (INTERSECTED) {
-// 					INTERSECTED.scale.x = 1;
-// 					INTERSECTED.scale.y = 1;
-// // 					INTERSECTED.position.x = 2;
-// // 					INTERSECTED.position.y = 1;
-// // 					INTERSECTED.position.z = 2.99
-// // 					INTERSECTED.rotation.y = 0;
-// 				}
-// 				INTERSECTED = undefined;
-// 			}
+					}
+					INTERSECTED = intersects[0].object;
+					if (INTERSECTED == hackerrank) {
+						INTERSECTED.scale.x = 2;
+					} else {
+						INTERSECTED.scale.y = 2;
+					}
+
+// 					INTERSECTED.position.x = 1;
+// 					INTERSECTED.position.y = 0;
+// 					INTERSECTED.position.z = 1;
+// 					INTERSECTED.rotation.y = Math.PI / 4;
+				}
+			} else {
+				if (INTERSECTED) {
+					INTERSECTED.scale.x = 1;
+					INTERSECTED.scale.y = 1;
+// 					INTERSECTED.position.x = 2;
+// 					INTERSECTED.position.y = 1;
+// 					INTERSECTED.position.z = 2.99
+// 					INTERSECTED.rotation.y = 0;
+				}
+				INTERSECTED = undefined;
+			}
+		
+		
+		
 		
 		
 		
