@@ -283,17 +283,14 @@
 		function render() {
 			raycaster.setFromCamera({ x: 0, y: 0 }, camera);
 			var intersects = raycaster.intersectObjects(room.children, true);
-			
-			posX = INTERSECTED.position.x;
-			posY = INTERSECTED.position.y;
-			posZ = INTERSECTED.position.z;
-			scaX = INTERSECTED.scale.x;
-			scaY = INTERSECTED.scale.y;
-			scaZ = INTERSECTED.scale.Z;
-			
 			if (intersects.length > 0) {
 				if (INTERSECTED != intersects[0].object) {
+					let posX = INTERSECTED.position.x;
+					let posY = INTERSECTED.position.y;
 					let posZ = INTERSECTED.position.z;
+					let scaX = INTERSECTED.scale.x;
+					let scaY = INTERSECTED.scale.y;
+					let scaZ = INTERSECTED.scale.Z;
 				
 					if (INTERSECTED) {INTERSECTED.scale.x = scaX; INTERSECTED.scale.y = scaY; INTERSECTED.position.z = posZ}
 					INTERSECTED = intersects[0].object;
