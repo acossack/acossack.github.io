@@ -291,7 +291,7 @@
 		
 		
 		var INTERSECTED;
-		var currentScaleX;
+		var currentScaleX = 1;
 		function render() {
 			raycaster.setFromCamera({ x: 0, y: 0 }, camera);
 			var intersects = raycaster.intersectObjects(room.children, true);
