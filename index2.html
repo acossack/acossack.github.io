@@ -209,8 +209,8 @@
 		// books
 		loader.load('https://acossack.github.io/mod/books.glb', function (gltf) {
 			books = gltf.scene;
-			books.scale.set(1, 2, 1);
-			books.position.set(-3, 0.5, 2.75)
+			books.scale.set(1, 1, 1);
+			books.position.set(-3, 1.5, 2.75)
 			scene.add(books);
 		},
 			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
@@ -221,7 +221,7 @@
 		loader.load('https://acossack.github.io/mod/curtains.glb', function (gltf) {
 			curtains = gltf.scene;
 			curtains.scale.set(0.0022, 0.002, 0.002);
-			curtains.position.set(3.5, 2.8, 0)
+			curtains.position.set(3.5, 3.8, 0)
 			curtains.rotation.y = - Math.PI / 2;
 			scene.add(curtains);
 		},
