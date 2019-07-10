@@ -291,6 +291,7 @@
 		
 		
 		var INTERSECTED;
+		var currentScaleX;
 		function render() {
 			raycaster.setFromCamera({ x: 0, y: 0 }, camera);
 			var intersects = raycaster.intersectObjects(room.children, true);
@@ -304,7 +305,7 @@
 						INTERSECTED.scale.x = INTERSECTED.currentScale.x;
 					}
 					INTERSECTED = intersects[ 0 ].object;
-					INTERSECTED.currentScale.x = INTERSECTED.scale.getComponent(0);
+					currentScaleX = INTERSECTED.scale.getComponent(0);
 					INTERSECTED.scale.x = 2;
 				}
 			} else {	
