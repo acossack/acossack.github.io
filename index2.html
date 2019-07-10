@@ -295,41 +295,44 @@
 			raycaster.setFromCamera({ x: 0, y: 0 }, camera);
 			var intersects = raycaster.intersectObjects(room.children, true);
 			
+			
+			
+						
 			if ( intersects.length > 0 ) {
-					if ( INTERSECTED != intersects[ 0 ].object ) {
-						if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-						INTERSECTED = intersects[ 0 ].object;
-						INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
-						INTERSECTED.material.emissive.setHex( 0xff0000 );
+				if ( INTERSECTED != intersects[ 0 ].object ) {
+					if ( INTERSECTED ) {
+						INTERSECTED.scale.x = INTERSECTED.currentScale.x;
 					}
-				} else {
-					if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-					INTERSECTED = null;
+					INTERSECTED = intersects[ 0 ].object;
+					INTERSECTED.currentScale.x = INTERSECTED.scale.x;
+					INTERSECTED.scale.x = 2;
+				}
+			} else {	
+				if ( INTERSECTED ) {
+					INTERSECTED.scale.x = INTERSECTED.currentScale.x;
+				}
+				INTERSECTED = null;
 				}
 			
 			
-	
 			
 			
-			
-// 			if (intersects.length > 0) {
-// 				if (INTERSECTED != intersects[0].object) {
-// 					if (INTERSECTED) {
-// 						INTERSECTED.scale.x = 1;
-// 						INTERSECTED.scale.y = 1;
-						
+// 			if ( intersects.length > 0 ) {
+// 				if ( INTERSECTED != intersects[ 0 ].object ) {
+// 					if ( INTERSECTED ) {
+// 						INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
 // 					}
-// 					INTERSECTED = intersects[0].object;
-// 					INTERSECTED.scale.x = 2;
-// 					INTERSECTED.scale.y = 2;
+// 					INTERSECTED = intersects[ 0 ].object;
+// 					INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
+// 					INTERSECTED.material.emissive.setHex( 0xff0000 );
 // 				}
-// 			} else {
-// 				if (INTERSECTED) {
-// 					INTERSECTED.scale.x = 1;
-// 					INTERSECTED.scale.y = 1;
+// 			} else {	
+// 				if ( INTERSECTED ) {
+// 					INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
 // 				}
-// 				INTERSECTED = undefined;
-// 			}
+// 				INTERSECTED = null;
+// 				}
+			
 
 			renderer.render(scene, camera);
 		}
