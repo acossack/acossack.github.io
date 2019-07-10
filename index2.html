@@ -304,7 +304,7 @@
 						INTERSECTED.scale.x = INTERSECTED.currentScale.x;
 					}
 					INTERSECTED = intersects[ 0 ].object;
-					INTERSECTED.currentScale.x = INTERSECTED.scale;
+					INTERSECTED.currentScale.x = INTERSECTED.scale.getComponent(0);
 					INTERSECTED.scale.x = 2;
 				}
 			} else {	
