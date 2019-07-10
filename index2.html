@@ -248,7 +248,7 @@
 		scene.add(myWindow);
 
 		// hackerrank
-		var hackerrankGeometry = new THREE.PlaneGeometry(0.5, 1);
+		var hackerrankGeometry = new THREE.PlaneGeometry(1, 1);
 		var hackerrankMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/1.png'), side: THREE.BackSide });
 		var hackerrank = new THREE.Mesh(hackerrankGeometry, hackerrankMaterial);
 		hackerrank.position.set(0, 0, 2.99);
