@@ -299,7 +299,7 @@
 			raycaster.setFromCamera({ x: 0, y: 0 }, camera);
 			var intersects = raycaster.intersectObjects(room.children, true);
 			if (intersects.length > 0) {
-				if (INTERSECTED != hackerrank) {
+				if (INTERSECTED != hackerrank2) {
 					if (INTERSECTED) {
 						INTERSECTED.scale.x = 1;
 						INTERSECTED.scale.y = 1;
@@ -309,7 +309,7 @@
 // 						INTERSECTED.rotation.y = 0;
 						
 					}
-					INTERSECTED = hackerrank;
+					INTERSECTED = hackerrank2;
 					INTERSECTED.scale.x = 2;
 					INTERSECTED.scale.y = 2;
 // 					INTERSECTED.position.x = 1;
