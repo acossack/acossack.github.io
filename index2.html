@@ -68,7 +68,7 @@
 
 		
 		var room = new THREE.Mesh(geometry, materials);
-		room.position.y = 2;
+		room.position.y = 1;
 		scene.add(room);
 		
 		
@@ -79,7 +79,7 @@
 		loader.load('https://acossack.github.io/mod/sofa.glb', function (gltf) {
 			sofa = gltf.scene;
 			sofa.scale.set(0.04, 0.04, 0.04);
-			sofa.position.set(0, -1, -1.3)
+			sofa.position.set(0, -2, -1.3)
 			sofa.rotation.y = - Math.PI / 2;
 			scene.add(sofa);
 		},
@@ -91,7 +91,7 @@
 		loader.load('https://acossack.github.io/mod/vlamp.glb', function (gltf) {
 			vlamp = gltf.scene;
 			vlamp.scale.set(0.2, 0.2, 0.2);
-			vlamp.position.set(-3.4, -1, -2.4)
+			vlamp.position.set(-3.4, -2, -2.4)
 			scene.add(vlamp);
 		},
 			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
@@ -102,7 +102,7 @@
 		loader.load('https://acossack.github.io/mod/table.glb', function (gltf) {
 			table = gltf.scene;
 			table.scale.set(0.04, 0.05, 0.04);
-			table.position.set(1.5, -1, 2.4)
+			table.position.set(1.5, -2, 2.4)
 			table.rotation.y = - Math.PI;
 			scene.add(table);
 		},
@@ -114,7 +114,7 @@
 		loader.load('https://acossack.github.io/mod/chair.glb', function (gltf) {
 			chair = gltf.scene;
 			chair.scale.set(0.9, 0.9, 0.9);
-			chair.position.set(2, 0, 1)
+			chair.position.set(2, -1, 1)
 			chair.rotation.y = Math.PI / 10;
 			scene.add(chair);
 		},
@@ -126,7 +126,7 @@
 		loader.load('https://acossack.github.io/mod/laptop.glb', function (gltf) {
 			laptop = gltf.scene;
 			laptop.scale.set(0.1, 0.1, 0.1);
-			laptop.position.set(1.5, 0.58, 2.3)
+			laptop.position.set(1.5, -0.42, 2.3)
 			laptop.rotation.y = Math.PI * 0.97;
 			scene.add(laptop);
 		},
@@ -138,7 +138,7 @@
 		loader.load('https://acossack.github.io/mod/lamp.glb', function (gltf) {
 			lamp = gltf.scene;
 			lamp.scale.set(0.04, 0.04, 0.04);
-			lamp.position.set(2.5, 0.62, 2.4)
+			lamp.position.set(2.5, -0.38, 2.4)
 			lamp.rotation.y = Math.PI * 0.9;
 			scene.add(lamp);
 		},
@@ -150,7 +150,7 @@
 		loader.load('https://acossack.github.io/mod/vr.glb', function (gltf) {
 			myVr = gltf.scene;
 			myVr.scale.set(0.2, 0.2, 0.2);
-			myVr.position.set(0.5, 0.7, 2.4)
+			myVr.position.set(0.5, -0.3, 2.4)
 			myVr.rotation.y = Math.PI * 1.2;
 			scene.add(myVr);
 		},
@@ -162,7 +162,7 @@
 		loader.load('https://acossack.github.io/mod/mug.glb', function (gltf) {
 			mug = gltf.scene;
 			mug.scale.set(0.05, 0.05, 0.05);
-			mug.position.set(0.5, -0.65, 2)
+			mug.position.set(0.5, -1.65, 2)
 			mug.rotation.y = - Math.PI / 2;
 			scene.add(mug);
 		},
@@ -174,7 +174,7 @@
 		loader.load('https://acossack.github.io/mod/cyra.glb', function (gltf) {
 			cyra = gltf.scene;
 			cyra.scale.set(0.2, 0.2, 0.2);
-			cyra.position.set(1.5, 1.45, 2.87)
+			cyra.position.set(1.5, 0.45, 2.87)
 			cyra.rotation.y = Math.PI / 2;
 			scene.add(cyra);
 		},
@@ -186,7 +186,7 @@
 		loader.load('https://acossack.github.io/mod/furniture.glb', function (gltf) {
 			furniture = gltf.scene;
 			furniture.scale.set(0.02, 0.02, 0.02);
-			furniture.position.set(-2, -1, 2.3)
+			furniture.position.set(-2, -2, 2.3)
 			furniture.rotation.y = Math.PI;
 			scene.add(furniture);
 		},
@@ -198,7 +198,7 @@
 		loader.load('https://acossack.github.io/mod/flowers.glb', function (gltf) {
 			flowers = gltf.scene;
 			flowers.scale.set(0.02, 0.02, 0.02);
-			flowers.position.set(-1.3, -0.25, 2.6)
+			flowers.position.set(-1.3, -1.25, 2.6)
 			flowers.rotation.y = Math.PI / 4;
 			scene.add(flowers);
 		},
@@ -210,7 +210,7 @@
 		loader.load('https://acossack.github.io/mod/books.glb', function (gltf) {
 			books = gltf.scene;
 			books.scale.set(1, 1, 1);
-			books.position.set(-3, 1.5, 2.75)
+			books.position.set(-3, 0.5, 2.75)
 			scene.add(books);
 		},
 			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
@@ -221,7 +221,7 @@
 		loader.load('https://acossack.github.io/mod/curtains.glb', function (gltf) {
 			curtains = gltf.scene;
 			curtains.scale.set(0.0022, 0.002, 0.002);
-			curtains.position.set(3.5, 3.8, 0)
+			curtains.position.set(3.5, 0.8, 0)
 			curtains.rotation.y = - Math.PI / 2;
 			scene.add(curtains);
 		},
@@ -237,7 +237,7 @@
 		var doorMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/door.jpg'), side: THREE.BackSide });
 		var door = new THREE.Mesh(doorGeometry, doorMaterial);
 		door.rotation.y = -0.5 * Math.PI;
-		door.position.set(-3.99, 1, 0);
+		door.position.set(-3.99, 0, 0);
 		scene.add(door);
 
 		// window
@@ -245,7 +245,7 @@
 		var myWindowMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/window.jpg'), side: THREE.FrontSide });
 		var myWindow = new THREE.Mesh(myWindowGeometry, myWindowMaterial);
 		myWindow.rotation.y = -0.5 * Math.PI;
-		myWindow.position.set(3.99, 2.2, 0);
+		myWindow.position.set(3.99, 1.2, 0);
 		scene.add(myWindow);
 
 		// hackerrank
