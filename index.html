@@ -255,7 +255,7 @@
 		scene.add(myWindow);
 
 		// joke
-		var jokeGeometry = new THREE.PlaneGeometry(3, 0.75);
+		var jokeGeometry = new THREE.PlaneGeometry(2.5, 0.625);
 		var jokeMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/joke.png'), side: THREE.DoubleSide });
 		var joke = new THREE.Mesh(jokeGeometry, jokeMaterial);
 		joke.position.set(0, 2, 2.99);
