@@ -261,7 +261,7 @@
 
 		// vk
 		var vkGeometry = new THREE.PlaneGeometry(1, 0.5);
-		var vkMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/1.png'), side: THREE.FrontSSide });
+		var vkMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/1.png'), side: THREE.FrontSide });
 		var vk = new THREE.Mesh(vkGeometry, vkMaterial);
 		vk.position.set(-2, 0.5, -2.99);
 		vk.name = 'vk';
@@ -269,7 +269,7 @@
 		
 		// yatsan
 		var yatsanGeometry = new THREE.PlaneGeometry(1, 0.5);
-		var yatsanMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/2.png'), side: THREE.FrontSSide });
+		var yatsanMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/2.png'), side: THREE.FrontSide });
 		var yatsan = new THREE.Mesh(yatsanGeometry, yatsanMaterial);
 		yatsan.position.set(2, 0.5, -2.99);
 		yatsan.name = 'yatsan';
