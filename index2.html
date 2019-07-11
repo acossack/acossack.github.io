@@ -265,11 +265,21 @@
 
 		// threejs
 		var threejsGeometry = new THREE.PlaneGeometry(1, 1);
-		var threejsMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/2.png'), side: THREE.BackSide });
+		var threejsMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/1.png'), side: THREE.BackSide });
 		var threejs = new THREE.Mesh(threejsGeometry, threejsMaterial);
 		threejs.position.set(-2, 1, 2.99);
 		threejs.name = 'threejs';
 		room.add(threejs);
+		
+		// lookAtMe
+		var lookAtMeGeometry = new THREE.PlaneGeometry(1, 1);
+		var lookAtMeMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/2.png'), side: THREE.FrontSide });
+		var lookAtMe = new THREE.Mesh(lookAtMeGeometry, lookAtMeMaterial);
+		lookAtMe.position.set(0, 1, -2.99);
+		lookAtMe.name = 'lookAtMe';
+		room.add(lookAtMe);
+		
+		var lookAtMeMaterial2 = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/3.png'), side: THREE.FrontSide });
 
 
 		
