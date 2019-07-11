@@ -301,10 +301,6 @@
 		
 		
 		var INTERSECTED;
-		var currentScaleX;
-		var currentScaleY;
-		var currentPositionZ;
-		var currentRotationY;
 		function render() {
 			raycaster.setFromCamera({ x: 0, y: 0 }, camera);
 			var intersects = raycaster.intersectObjects(room.children, true);
@@ -312,7 +308,7 @@
 			if ( intersects.length > 0 ) {
 				if ( INTERSECTED != intersects[ 0 ].object ) {
 					if ( INTERSECTED ) {
-						if (INTERSECTED.name == 'httmacademy') {
+						if (INTERSECTED.name == 'htmlacademy') {
 							INTERSECTED.scale.x = currentScaleX;
 							INTERSECTED.scale.y = currentScaleY;
 						} else if (INTERSECTED.name == 'hackerrank') {
@@ -325,11 +321,11 @@
 						
 					}
 					INTERSECTED = intersects[ 0 ].object;
-					currentScaleX = INTERSECTED.scale.getComponent(0);
-					currentScaleY = INTERSECTED.scale.getComponent(1);
-					currentPositionZ = INTERSECTED.position.getComponent(2);
-					currentRotationY = INTERSECTED.rotation.y;
-					if (INTERSECTED.name == 'httmacademy') {
+					var currentScaleX = INTERSECTED.scale.getComponent(0);
+					var currentScaleY = INTERSECTED.scale.getComponent(1);
+					var currentPositionZ = INTERSECTED.position.getComponent(2);
+					var currentRotationY = INTERSECTED.rotation.y;
+					if (INTERSECTED.name == 'htmlacademy') {
 							INTERSECTED.scale.x = 2
 							INTERSECTED.scale.y = 2;
 					} else if (INTERSECTED.name == 'hackerrank') {
@@ -343,7 +339,7 @@
 				}
 			} else {	
 				if ( INTERSECTED ) {
-					if (INTERSECTED.name == 'httmacademy') {
+					if (INTERSECTED.name == 'htmlacademy') {
 						INTERSECTED.scale.x = currentScaleX;
 						INTERSECTED.scale.y = currentScaleY;
 					} else if (INTERSECTED.name == 'hackerrank') {
