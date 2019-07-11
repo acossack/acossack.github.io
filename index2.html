@@ -298,7 +298,10 @@
 
 		
 		
-		
+		var currentScaleX;
+		var currentScaleY;
+		var currentPositionZ;
+		var currentRotationY;
 		
 		var INTERSECTED;
 		function render() {
@@ -321,10 +324,10 @@
 						
 					}
 					INTERSECTED = intersects[ 0 ].object;
-					var currentScaleX = INTERSECTED.scale.getComponent(0);
-					var currentScaleY = INTERSECTED.scale.getComponent(1);
-					var currentPositionZ = INTERSECTED.position.getComponent(2);
-					var currentRotationY = INTERSECTED.rotation.y;
+					currentScaleX = INTERSECTED.scale.getComponent(0);
+					currentScaleY = INTERSECTED.scale.getComponent(1);
+					currentPositionZ = INTERSECTED.position.getComponent(2);
+					currentRotationY = INTERSECTED.rotation.y;
 					if (INTERSECTED.name == 'htmlacademy') {
 							INTERSECTED.scale.x = 2
 							INTERSECTED.scale.y = 2;
