@@ -5,10 +5,10 @@
 <!-- Origin Trial Token, feature = WebXR Device API, origin = https://acossack.github.io, expires = 2019-08-16 -->
 <!-- <meta http-equiv="origin-trial" data-feature="WebXR Device API" data-expires="2019-08-16" content="AvXi+ZLENrqNfE9kA+h4NxnrYDUw9HX5w+SO3WMOdMJe8OET4IiQNzMXUyITqX5qEKSA2o6hCll/WycT1Oq25gIAAABaeyJvcmlnaW4iOiJodHRwczovL2Fjb3NzYWNrLmdpdGh1Yi5pbzo0NDMiLCJmZWF0dXJlIjoiV2ViWFJEZXZpY2VNNzYiLCJleHBpcnkiOjE1NjU5NDU3NDl9"> -->
 
-	<script src="https://threejs.org/build/three.min.js"></script>
-<script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
-<script src="https://threejs.org/examples/js/vr/HelioWebXRPolyfill.js"></script>
-<script src="https://threejs.org/examples/js/vr/WebVR.js"></script>
+<script src="js/three.min.js"></script>
+<script src="js/GLTFLoader.js"></script>
+<script src="js/HelioWebXRPolyfill.js"></script>
+<script src="js/WebVR.js"></script>
 <body>
 	<script>
 		var scene = new THREE.Scene();
@@ -72,7 +72,7 @@
 		var loader = new THREE.GLTFLoader();
 
 		// sofa
-		loader.load('https://acossack.github.io/mod/sofa.glb', function (gltf) {
+		loader.load('mod/sofa.glb', function (gltf) {
 			sofa = gltf.scene;
 			sofa.scale.set(0.04, 0.04, 0.04);
 			sofa.position.set(0, -1, -1.3)
@@ -84,7 +84,7 @@
 		);
 
 		// vlamp
-		loader.load('https://acossack.github.io/mod/vlamp.glb', function (gltf) {
+		loader.load('mod/vlamp.glb', function (gltf) {
 			vlamp = gltf.scene;
 			vlamp.scale.set(0.2, 0.2, 0.2);
 			vlamp.position.set(-3.4, -1, -2.4)
@@ -95,7 +95,7 @@
 		);
 
 		// table
-		loader.load('https://acossack.github.io/mod/table.glb', function (gltf) {
+		loader.load('mod/table.glb', function (gltf) {
 			table = gltf.scene;
 			table.scale.set(0.04, 0.05, 0.04);
 			table.position.set(1.5, -1, 2.4)
@@ -107,7 +107,7 @@
 		);
 
 		// chair
-		loader.load('https://acossack.github.io/mod/chair.glb', function (gltf) {
+		loader.load('mod/chair.glb', function (gltf) {
 			chair = gltf.scene;
 			chair.scale.set(0.9, 0.9, 0.9);
 			chair.position.set(2, 0, 1)
@@ -119,7 +119,7 @@
 		);
 
 		// laptop
-		loader.load('https://acossack.github.io/mod/laptop.glb', function (gltf) {
+		loader.load('mod/laptop.glb', function (gltf) {
 			laptop = gltf.scene;
 			laptop.scale.set(0.1, 0.1, 0.1);
 			laptop.position.set(1.5, 0.6, 2.3)
@@ -131,7 +131,7 @@
 		);
 
 		// lamp
-		loader.load('https://acossack.github.io/mod/lamp.glb', function (gltf) {
+		loader.load('mod/lamp.glb', function (gltf) {
 			lamp = gltf.scene;
 			lamp.scale.set(0.04, 0.04, 0.04);
 			lamp.position.set(2.5, 0.6, 2.4)
@@ -143,7 +143,7 @@
 		);
 
 		// vr
-		loader.load('https://acossack.github.io/mod/vr.glb', function (gltf) {
+		loader.load('mod/vr.glb', function (gltf) {
 			myVr = gltf.scene;
 			myVr.scale.set(0.2, 0.2, 0.2);
 			myVr.position.set(0.5, 0.7, 2.4)
@@ -155,7 +155,7 @@
 		);
 
 		// mug
-		loader.load('https://acossack.github.io/mod/mug.glb', function (gltf) {
+		loader.load('mod/mug.glb', function (gltf) {
 			mug = gltf.scene;
 			mug.scale.set(0.05, 0.05, 0.05);
 			mug.position.set(0.5, -0.65, 2)
@@ -167,7 +167,7 @@
 		);
 
 		// cyra
-		loader.load('https://acossack.github.io/mod/cyra.glb', function (gltf) {
+		loader.load('mod/cyra.glb', function (gltf) {
 			cyra = gltf.scene;
 			cyra.scale.set(0.2, 0.2, 0.2);
 			cyra.position.set(1.5, 1.45, 2.87)
@@ -179,7 +179,7 @@
 		);
 
 		// furniture
-		loader.load('https://acossack.github.io/mod/furniture.glb', function (gltf) {
+		loader.load('mod/furniture.glb', function (gltf) {
 			furniture = gltf.scene;
 			furniture.scale.set(0.02, 0.02, 0.02);
 			furniture.position.set(-2, -1, 2.3)
@@ -191,7 +191,7 @@
 		);
 
 		// flowers
-		loader.load('https://acossack.github.io/mod/flowers.glb', function (gltf) {
+		loader.load('mod/flowers.glb', function (gltf) {
 			flowers = gltf.scene;
 			flowers.scale.set(0.02, 0.02, 0.02);
 			flowers.position.set(-1.3, -0.25, 2.6)
@@ -203,7 +203,7 @@
 		);
 
 		// books
-		loader.load('https://acossack.github.io/mod/books.glb', function (gltf) {
+		loader.load('mod/books.glb', function (gltf) {
 			books = gltf.scene;
 			books.scale.set(1, 1, 1);
 			books.position.set(-3, 1.5, 2.75)
@@ -214,7 +214,7 @@
 		);
 
 		// curtains
-		loader.load('https://acossack.github.io/mod/curtains.glb', function (gltf) {
+		loader.load('mod/curtains.glb', function (gltf) {
 			curtains = gltf.scene;
 			curtains.scale.set(0.0022, 0.002, 0.002);
 			curtains.position.set(3.5, 3.8, 0)
@@ -231,7 +231,7 @@
 
 		// door
 		var doorGeometry = new THREE.PlaneGeometry(2, 4);
-		var doorMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/door.jpg'), side: THREE.BackSide });
+		var doorMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/door.jpg'), side: THREE.BackSide });
 		var door = new THREE.Mesh(doorGeometry, doorMaterial);
 		door.rotation.y = -0.5 * Math.PI;
 		door.position.set(-3.99, 1, 0);
@@ -239,7 +239,7 @@
 
 		// window
 		var myWindowGeometry = new THREE.PlaneGeometry(2.6, 2.6);
-		var myWindowMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/window.jpg'), side: THREE.FrontSide });
+		var myWindowMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/window.jpg'), side: THREE.FrontSide });
 		var myWindow = new THREE.Mesh(myWindowGeometry, myWindowMaterial);
 		myWindow.rotation.y = -0.5 * Math.PI;
 		myWindow.position.set(3.99, 2.2, 0);
@@ -249,8 +249,8 @@
 		// posters
 		// lookAtMe
 		var lookAtMeGeometry = new THREE.PlaneGeometry(1, 1);
-		var lookAtMeTexture1 = loader.load('https://acossack.github.io/pic/00.png');
-		var lookAtMeTexture2 = loader.load('https://acossack.github.io/pic/0.png');				   
+		var lookAtMeTexture1 = loader.load('pic/00.png');
+		var lookAtMeTexture2 = loader.load('pic/0.png');				   
 		var lookAtMeMaterial = new THREE.MeshLambertMaterial({ map: lookAtMeTexture1 , side: THREE.FrontSide });
 		var lookAtMe = new THREE.Mesh(lookAtMeGeometry, lookAtMeMaterial);
 		lookAtMe.position.set(0, 0.5, -2.99);
@@ -259,7 +259,7 @@
 
 		// vk
 		var vkGeometry = new THREE.PlaneGeometry(1, 0.5);
-		var vkMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/1.png'), side: THREE.FrontSSide });
+		var vkMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/1.png'), side: THREE.FrontSSide });
 		var vk = new THREE.Mesh(vkGeometry, vkMaterial);
 		vk.position.set(-2, 0.5, -2.99);
 		vk.name = 'vk';
@@ -267,7 +267,7 @@
 		
 		// yatsan
 		var yatsanGeometry = new THREE.PlaneGeometry(1, 0.5);
-		var yatsanMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/2.png'), side: THREE.FrontSSide });
+		var yatsanMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/2.png'), side: THREE.FrontSSide });
 		var yatsan = new THREE.Mesh(yatsanGeometry, yatsanMaterial);
 		yatsan.position.set(2, 0.5, -2.99);
 		yatsan.name = 'yatsan';
@@ -275,7 +275,7 @@
 		
 		// hackerrank
 		var hackerrankGeometry = new THREE.PlaneGeometry(1, 1);
-		var hackerrankMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/3.png'), side: THREE.BackSide });
+		var hackerrankMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/3.png'), side: THREE.BackSide });
 		var hackerrank = new THREE.Mesh(hackerrankGeometry, hackerrankMaterial);
 		hackerrank.position.set(2, 0.5, 2.99);
 		hackerrank.name = 'hackerrank';
@@ -283,7 +283,7 @@
 		
 		// htmlacademy
 		var htmlacademyGeometry = new THREE.PlaneGeometry(1, 1);
-		var htmlacademyMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/4.png'), side: THREE.BackSide });
+		var htmlacademyMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/4.png'), side: THREE.BackSide });
 		var htmlacademy = new THREE.Mesh(htmlacademyGeometry, htmlacademyMaterial);
 		htmlacademy.position.set(-2, 0.5, 2.99);
 		htmlacademy.name = 'htmlacademy';
@@ -291,7 +291,7 @@
 
 		// dip
 		var dipGeometry = new THREE.PlaneGeometry(0.5, 0.375);
-		var dipMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/dip.png'), side: THREE.BackSide });
+		var dipMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/dip.png'), side: THREE.BackSide });
 		var dip = new THREE.Mesh(dipGeometry, dipMaterial);
 		dip.position.set(0, 0.5, 2.99);
 		dip.name = 'dip';
