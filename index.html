@@ -299,6 +299,13 @@
 		dip.name = 'dip';
 		room.add(dip);
 		
+		// joke
+		var jokeGeometry = new THREE.PlaneGeometry(4, 1);
+		var jokeMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/joke.png'), side: THREE.BackSide });
+		var joke = new THREE.Mesh(jokeGeometry, jokeMaterial);
+		joke.position.set(0, 1, 2.99);
+		scene.add(joke);
+		
 		
 		// ray and renderer
 		var raycaster = new THREE.Raycaster();
