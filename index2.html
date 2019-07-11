@@ -314,12 +314,18 @@
 						if (INTERSECTED.name == 'htmlacademy') {
 							INTERSECTED.scale.x = currentScaleX;
 							INTERSECTED.scale.y = currentScaleY;
+							INTERSECTED.position.z = currentPositionZ;
+							INTERSECTED.rotation.y = currentRotationY;
 						} else if (INTERSECTED.name == 'hackerrank') {
 							INTERSECTED.scale.x = currentScaleX;
-							INTERSECTED.scale.y = currentScaleY;						
+							INTERSECTED.scale.y = currentScaleY;
+							INTERSECTED.position.z = currentPositionZ;
+							INTERSECTED.rotation.y = currentRotationY;
 						} else if (INTERSECTED.name == 'threejs') {
 							INTERSECTED.scale.x = currentScaleX;
-							INTERSECTED.scale.y = currentScaleY;	
+							INTERSECTED.scale.y = currentScaleY;
+							INTERSECTED.position.z = currentPositionZ;
+							INTERSECTED.rotation.y = currentRotationY;
 						}
 						
 					}
@@ -331,12 +337,17 @@
 					if (INTERSECTED.name == 'htmlacademy') {
 							INTERSECTED.scale.x = 2
 							INTERSECTED.scale.y = 2;
+							INTERSECTED.position.z = 0;
+							INTERSECTED.rotation.y = Math.PI / 4;
 					} else if (INTERSECTED.name == 'hackerrank') {
-							INTERSECTED.scale.x = 3;
-							INTERSECTED.scale.y = 3;						
+							INTERSECTED.scale.x = 2;
+							INTERSECTED.scale.y = 2;
+							INTERSECTED.position.z = 0;
 					} else if (INTERSECTED.name == 'threejs') {
-							INTERSECTED.scale.x = 4;
-							INTERSECTED.scale.y = 4;	
+							INTERSECTED.scale.x = 2;
+							INTERSECTED.scale.y = 2;
+							INTERSECTED.position.z = 0;
+							INTERSECTED.rotation.y = - Math.PI / 4;
 					}
 					
 				}
@@ -345,12 +356,18 @@
 					if (INTERSECTED.name == 'htmlacademy') {
 						INTERSECTED.scale.x = currentScaleX;
 						INTERSECTED.scale.y = currentScaleY;
+						INTERSECTED.position.z = currentPositionZ;
+						INTERSECTED.rotation.y = currentRotationY;
 					} else if (INTERSECTED.name == 'hackerrank') {
 						INTERSECTED.scale.x = currentScaleX;
-						INTERSECTED.scale.y = currentScaleY;						
+						INTERSECTED.scale.y = currentScaleY;	
+						INTERSECTED.position.z = currentPositionZ;
+						INTERSECTED.rotation.y = currentRotationY;
 					} else if (INTERSECTED.name == 'threejs') {
 						INTERSECTED.scale.x = currentScaleX;
-						INTERSECTED.scale.y = currentScaleY;	
+						INTERSECTED.scale.y = currentScaleY;
+						INTERSECTED.position.z = currentPositionZ;
+						INTERSECTED.rotation.y = currentRotationY;
 					}
 				}
 				INTERSECTED = null;
