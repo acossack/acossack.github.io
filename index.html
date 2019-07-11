@@ -300,10 +300,10 @@
 		room.add(dip);
 		
 		// joke
-		var jokeGeometry = new THREE.PlaneGeometry(4, 1);
-		var jokeMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/joke.png'), side: THREE.BackSide });
+		var jokeGeometry = new THREE.PlaneGeometry(3, 0.75);
+		var jokeMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/joke.png'), side: THREE.BothSide });
 		var joke = new THREE.Mesh(jokeGeometry, jokeMaterial);
-		joke.position.set(0, 1, 2.99);
+		joke.position.set(0, 3, 2.99);
 		scene.add(joke);
 		
 		
