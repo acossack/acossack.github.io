@@ -325,13 +325,15 @@
 			if ( intersects.length > 0 ) {
 				if ( INTERSECTED != intersects[ 0 ].object ) {
 					if ( INTERSECTED ) {
-							INTERSECTED.scale.x = currentScaleX;
-							INTERSECTED.scale.y = currentScaleY;
-							INTERSECTED.position.X = currentPositionY;
-							INTERSECTED.position.y = currentPositionY;
-							INTERSECTED.position.z = currentPositionZ;
-							INTERSECTED.rotation.y = currentRotationY;
-						
+						INTERSECTED.scale.x = currentScaleX;
+						INTERSECTED.scale.y = currentScaleY;
+						INTERSECTED.position.X = currentPositionY;
+						INTERSECTED.position.y = currentPositionY;
+						INTERSECTED.position.z = currentPositionZ;
+						INTERSECTED.rotation.y = currentRotationY;
+						if (INTERSECTED.name == 'lookAtMe') {
+							INTERSECTED.material.map = lookAtMeTexture1;
+						}
 					}
 					
 					INTERSECTED = intersects[ 0 ].object;
@@ -368,13 +370,15 @@
 				}
 			} else {	
 				if ( INTERSECTED ) {
-						INTERSECTED.scale.x = currentScaleX;
-						INTERSECTED.scale.y = currentScaleY;
-						INTERSECTED.position.x = currentPositionX;
-						INTERSECTED.position.y = currentPositionY;
-						INTERSECTED.position.z = currentPositionZ;
-						INTERSECTED.rotation.y = currentRotationY;
-					
+					INTERSECTED.scale.x = currentScaleX;
+					INTERSECTED.scale.y = currentScaleY;
+					INTERSECTED.position.x = currentPositionX;
+					INTERSECTED.position.y = currentPositionY;
+					INTERSECTED.position.z = currentPositionZ;
+					INTERSECTED.rotation.y = currentRotationY;
+					if (INTERSECTED.name == 'lookAtMe') {
+						INTERSECTED.material.map = lookAtMeTexture1;
+					}
 				}
 				INTERSECTED = null;
 			}
