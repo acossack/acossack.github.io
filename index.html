@@ -247,6 +247,13 @@
 		myWindow.position.set(3.99, 2.2, 0);
 		scene.add(myWindow);
 		
+		// joke
+		var jokeGeometry = new THREE.PlaneGeometry(3, 0.75);
+		var jokeMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/joke.png'), side: THREE.DoubleSide });
+		var joke = new THREE.Mesh(jokeGeometry, jokeMaterial);
+		joke.position.set(0, 2, 2.99);
+		scene.add(joke);
+		
 		
 		// posters
 		// lookAtMe
@@ -298,13 +305,6 @@
 		dip.position.set(0, 0.5, 2.99);
 		dip.name = 'dip';
 		room.add(dip);
-		
-		// joke
-		var jokeGeometry = new THREE.PlaneGeometry(3, 0.75);
-		var jokeMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/joke.png'), side: THREE.BothSide });
-		var joke = new THREE.Mesh(jokeGeometry, jokeMaterial);
-		joke.position.set(0, 3, 2.99);
-		scene.add(joke);
 		
 		
 		// ray and renderer
