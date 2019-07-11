@@ -313,7 +313,7 @@
 		dip.name = 'dip';
 		room.add(dip);
 
-		
+		var polyfill = new WebVRPolyfill();
 		// Polyfill always provides us with `navigator.getVRDisplays`
 		navigator.getVRDisplays().then(displays => {
  		// If we have a native VRDisplay, or if the polyfill
