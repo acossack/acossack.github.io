@@ -292,7 +292,7 @@
 		room.add(htmlacademy);
 
 		// dip
-		var dipGeometry = new THREE.PlaneGeometry(1, 0.75);
+		var dipGeometry = new THREE.PlaneGeometry(0.5, 0.375);
 		var dipMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/dip.png'), side: THREE.BackSide });
 		var dip = new THREE.Mesh(dipGeometry, dipMaterial);
 		dip.position.set(0, 0.5, 2.99);
