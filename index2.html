@@ -293,8 +293,8 @@
 		
 		
 		var INTERSECTED;
-		var currentScaleX = 1;
-		var currentScaleY = 1;
+		var currentScaleX;
+		var currentScaleY;
 		function render() {
 			raycaster.setFromCamera({ x: 0, y: 0 }, camera);
 			var intersects = raycaster.intersectObjects(room.children, true);
@@ -317,7 +317,7 @@
 					(INTERSECTED.name == 'hackerrank') ? INTERSECTED.scale.x = currentScaleX : INTERSECTED.scale.y = currentScaleY;
 				}
 				INTERSECTED = null;
-				}
+			}
 			
 			
 		
