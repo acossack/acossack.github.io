@@ -41,17 +41,17 @@
 
 		var loader = new THREE.TextureLoader();
 
-		var textureW = loader.load('pic/wallpaper.jpg');
+		var textureW = loader.load('pic/wallpaper.png');
 		textureW.wrapS = THREE.RepeatWrapping;
 		textureW.wrapT = THREE.RepeatWrapping;
 		textureW.repeat.set(8, 8);
 
-		var textureF = loader.load('pic/floor.jpg');
+		var textureF = loader.load('pic/floor.png');
 		textureF.wrapS = THREE.RepeatWrapping;
 		textureF.wrapT = THREE.RepeatWrapping;
 		textureF.repeat.set(3, 2);
 
-		var textureC = loader.load('pic/ceiling.jpg');
+		var textureC = loader.load('pic/ceiling.png');
 		textureC.wrapS = THREE.RepeatWrapping;
 		textureC.wrapT = THREE.RepeatWrapping;
 		textureC.repeat.set(3, 2);
