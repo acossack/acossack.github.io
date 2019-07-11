@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>VR resume</title>
-<style>body {margin: 0; overflow: hidden;}</style>
+	<title>VR resume</title>
+	<style>
+		body {
+			margin: 0;
+			overflow: hidden;
+		}
+	</style>
 </head>
 <!-- Origin Trial Token, feature = WebXR Device API, origin = https://acossack.github.io, expires = 2019-08-16 -->
 <!-- <meta http-equiv="origin-trial" data-feature="WebXR Device API" data-expires="2019-08-16" content="AvXi+ZLENrqNfE9kA+h4NxnrYDUw9HX5w+SO3WMOdMJe8OET4IiQNzMXUyITqX5qEKSA2o6hCll/WycT1Oq25gIAAABaeyJvcmlnaW4iOiJodHRwczovL2Fjb3NzYWNrLmdpdGh1Yi5pbzo0NDMiLCJmZWF0dXJlIjoiV2ViWFJEZXZpY2VNNzYiLCJleHBpcnkiOjE1NjU5NDU3NDl9"> -->
@@ -11,6 +17,7 @@
 <script src="js/GLTFLoader.js"></script>
 <script src="js/HelioWebXRPolyfill.js"></script>
 <script src="js/WebVR.js"></script>
+
 <body>
 	<script>
 		var scene = new THREE.Scene();
@@ -34,7 +41,7 @@
 
 		var light = new THREE.AmbientLight(0xffffff);
 		scene.add(light);
-		
+
 		// box
 		var geometry = new THREE.BoxGeometry(8, 6, 6);
 
@@ -56,19 +63,19 @@
 		textureC.repeat.set(3, 2);
 
 		var materials = [
-			new THREE.MeshBasicMaterial({map: textureW, side: THREE.BackSide}),
-			new THREE.MeshBasicMaterial({map: textureW, side: THREE.BackSide}),
-			new THREE.MeshBasicMaterial({map: textureC, side: THREE.BackSide}),
-			new THREE.MeshBasicMaterial({map: textureF, side: THREE.BackSide}),
-			new THREE.MeshBasicMaterial({map: textureW, side: THREE.BackSide}),
-			new THREE.MeshBasicMaterial({map: textureW, side: THREE.BackSide}),
+			new THREE.MeshBasicMaterial({ map: textureW, side: THREE.BackSide }),
+			new THREE.MeshBasicMaterial({ map: textureW, side: THREE.BackSide }),
+			new THREE.MeshBasicMaterial({ map: textureC, side: THREE.BackSide }),
+			new THREE.MeshBasicMaterial({ map: textureF, side: THREE.BackSide }),
+			new THREE.MeshBasicMaterial({ map: textureW, side: THREE.BackSide }),
+			new THREE.MeshBasicMaterial({ map: textureW, side: THREE.BackSide }),
 		];
 
-		
+
 		var room = new THREE.Mesh(geometry, materials);
 		room.position.y = 2;
 		scene.add(room);
-		
+
 
 		// models
 		var loader = new THREE.GLTFLoader();
@@ -227,7 +234,7 @@
 			function (error) { console.log('An error happened'); }
 		);
 
-		
+
 		// textures
 		var loader = new THREE.TextureLoader();
 
@@ -246,21 +253,21 @@
 		myWindow.rotation.y = -0.5 * Math.PI;
 		myWindow.position.set(3.99, 2.2, 0);
 		scene.add(myWindow);
-		
+
 		// joke
 		var jokeGeometry = new THREE.PlaneGeometry(3, 0.75);
 		var jokeMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/joke.png'), side: THREE.DoubleSide });
 		var joke = new THREE.Mesh(jokeGeometry, jokeMaterial);
 		joke.position.set(0, 2, 2.99);
 		scene.add(joke);
-		
-		
+
+
 		// posters
 		// lookAtMe
 		var lookAtMeGeometry = new THREE.PlaneGeometry(1, 1);
 		var lookAtMeTexture1 = loader.load('pic/00.png');
-		var lookAtMeTexture2 = loader.load('pic/0.png');				   
-		var lookAtMeMaterial = new THREE.MeshLambertMaterial({ map: lookAtMeTexture1 , side: THREE.FrontSide });
+		var lookAtMeTexture2 = loader.load('pic/0.png');
+		var lookAtMeMaterial = new THREE.MeshLambertMaterial({ map: lookAtMeTexture1, side: THREE.FrontSide });
 		var lookAtMe = new THREE.Mesh(lookAtMeGeometry, lookAtMeMaterial);
 		lookAtMe.position.set(0, 0.5, -2.99);
 		lookAtMe.name = 'lookAtMe';
@@ -273,7 +280,7 @@
 		vk.position.set(-2, 0.5, -2.99);
 		vk.name = 'vk';
 		room.add(vk);
-		
+
 		// yatsan
 		var yatsanGeometry = new THREE.PlaneGeometry(1, 0.5);
 		var yatsanMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/2.png'), side: THREE.FrontSide });
@@ -281,7 +288,7 @@
 		yatsan.position.set(2, 0.5, -2.99);
 		yatsan.name = 'yatsan';
 		room.add(yatsan);
-		
+
 		// hackerrank
 		var hackerrankGeometry = new THREE.PlaneGeometry(1, 1);
 		var hackerrankMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/3.png'), side: THREE.BackSide });
@@ -289,7 +296,7 @@
 		hackerrank.position.set(2, 0.5, 2.99);
 		hackerrank.name = 'hackerrank';
 		room.add(hackerrank);
-		
+
 		// htmlacademy
 		var htmlacademyGeometry = new THREE.PlaneGeometry(1, 1);
 		var htmlacademyMaterial = new THREE.MeshLambertMaterial({ map: loader.load('pic/4.png'), side: THREE.BackSide });
@@ -305,8 +312,8 @@
 		dip.position.set(0, 0.5, 2.99);
 		dip.name = 'dip';
 		room.add(dip);
-		
-		
+
+
 		// ray and renderer
 		var raycaster = new THREE.Raycaster();
 		var renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -330,22 +337,22 @@
 		}
 		animate();
 
-		
+
 		var currentScaleX;
 		var currentScaleY;
 		var currentPositionX;
 		var currentPositionY;
 		var currentPositionZ;
 		var currentRotationY;
-		
+
 		var INTERSECTED;
 		function render() {
 			raycaster.setFromCamera({ x: 0, y: 0 }, camera);
 			var intersects = raycaster.intersectObjects(room.children, true);
-					
-			if ( intersects.length > 0 ) {
-				if ( INTERSECTED != intersects[ 0 ].object ) {
-					if ( INTERSECTED ) {
+
+			if (intersects.length > 0) {
+				if (INTERSECTED != intersects[0].object) {
+					if (INTERSECTED) {
 						INTERSECTED.scale.x = currentScaleX;
 						INTERSECTED.scale.y = currentScaleY;
 						INTERSECTED.position.x = currentPositionY;
@@ -356,19 +363,19 @@
 							INTERSECTED.material.map = lookAtMeTexture1;
 						}
 					}
-					
-					INTERSECTED = intersects[ 0 ].object;
+
+					INTERSECTED = intersects[0].object;
 					currentScaleX = INTERSECTED.scale.getComponent(0);
 					currentScaleY = INTERSECTED.scale.getComponent(1);
 					currentPositionX = INTERSECTED.position.getComponent(0);
 					currentPositionY = INTERSECTED.position.getComponent(1);
 					currentPositionZ = INTERSECTED.position.getComponent(2);
 					currentRotationY = INTERSECTED.rotation.y;
-					
+
 					INTERSECTED.scale.x = 2;
 					INTERSECTED.scale.y = 2;
 					INTERSECTED.position.y = -0.25;
-					
+
 					if (INTERSECTED.name == 'lookAtMe') {
 						INTERSECTED.material.map = lookAtMeTexture2;
 						INTERSECTED.position.z = -1;
@@ -394,8 +401,8 @@
 						INTERSECTED.scale.y = 4;
 					}
 				}
-			} else {	
-				if ( INTERSECTED ) {
+			} else {
+				if (INTERSECTED) {
 					INTERSECTED.scale.x = currentScaleX;
 					INTERSECTED.scale.y = currentScaleY;
 					INTERSECTED.position.x = currentPositionX;
@@ -412,5 +419,4 @@
 		}
 	</script>
 </body>
-
 </html>
