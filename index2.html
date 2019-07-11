@@ -255,7 +255,7 @@
 		var lookAtMeTexture2 = loader.load('https://acossack.github.io/pic/0.png');				   
 		var lookAtMeMaterial = new THREE.MeshLambertMaterial({ map: lookAtMeTexture1 , side: THREE.FrontSide });
 		var lookAtMe = new THREE.Mesh(lookAtMeGeometry, lookAtMeMaterial);
-		lookAtMe.position.set(0, 1, -2.99);
+		lookAtMe.position.set(0, 0.5, -2.99);
 		lookAtMe.name = 'lookAtMe';
 		room.add(lookAtMe);
 
@@ -263,7 +263,7 @@
 		var vkGeometry = new THREE.PlaneGeometry(1, 0.5);
 		var vkMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/1.png'), side: THREE.FrontSSide });
 		var vk = new THREE.Mesh(vkGeometry, vkMaterial);
-		vk.position.set(-2, 1, -2.99);
+		vk.position.set(-2, 0.5, -2.99);
 		vk.name = 'vk';
 		room.add(vk);
 		
@@ -271,7 +271,7 @@
 		var yatsanGeometry = new THREE.PlaneGeometry(1, 0.5);
 		var yatsanMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/2.png'), side: THREE.FrontSSide });
 		var yatsan = new THREE.Mesh(yatsanGeometry, yatsanMaterial);
-		yatsan.position.set(2, 1, -2.99);
+		yatsan.position.set(2, 0.5, -2.99);
 		yatsan.name = 'yatsan';
 		room.add(yatsan);
 		
@@ -279,7 +279,7 @@
 		var hackerrankGeometry = new THREE.PlaneGeometry(1, 1);
 		var hackerrankMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/3.png'), side: THREE.BackSide });
 		var hackerrank = new THREE.Mesh(hackerrankGeometry, hackerrankMaterial);
-		hackerrank.position.set(2, 1, 2.99);
+		hackerrank.position.set(2, 0.5, 2.99);
 		hackerrank.name = 'hackerrank';
 		room.add(hackerrank);
 		
@@ -287,7 +287,7 @@
 		var htmlacademyGeometry = new THREE.PlaneGeometry(1, 1);
 		var htmlacademyMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/4.png'), side: THREE.BackSide });
 		var htmlacademy = new THREE.Mesh(htmlacademyGeometry, htmlacademyMaterial);
-		htmlacademy.position.set(-2, 1, 2.99);
+		htmlacademy.position.set(-2, 0.5, 2.99);
 		htmlacademy.name = 'htmlacademy';
 		room.add(htmlacademy);
 
@@ -295,7 +295,7 @@
 		var dipGeometry = new THREE.PlaneGeometry(1, 0.75);
 		var dipMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/dip.jpg'), side: THREE.BackSide });
 		var dip = new THREE.Mesh(dipGeometry, dipMaterial);
-		dip.position.set(0, 1, 2.99);
+		dip.position.set(0, 0.5, 2.99);
 		dip.name = 'dip';
 		room.add(dip);
 		
@@ -356,29 +356,31 @@
 					currentPositionZ = INTERSECTED.position.getComponent(2);
 					currentRotationY = INTERSECTED.rotation.y;
 					
-					if (INTERSECTED.name == 'htmlacademy') {
-						INTERSECTED.scale.x = 2
-						INTERSECTED.scale.y = 2;
+					INTERSECTED.scale.x = 2
+					INTERSECTED.scale.y = 2;
+					INTERSECTED.position.y = 0;
+					
+					if (INTERSECTED.name == 'lookAtMe') {
+						INTERSECTED.material.map = lookAtMeTexture2;
+					} else if (INTERSECTED.name == 'vk') {
+						INTERSECTED.position.x = -1;
+						INTERSECTED.position.z = -1;
+						INTERSECTED.rotation.y = Math.PI / 4;
+					} else if if (INTERSECTED.name == 'yatsan') {
 						INTERSECTED.position.x = 1;
-						INTERSECTED.position.y = 0;
+						INTERSECTED.position.z = -1;
+						INTERSECTED.rotation.y = - Math.PI / 4;
+					} else if (INTERSECTED.name == 'hackerrank') {
+						INTERSECTED.position.x = 1;
 						INTERSECTED.position.z = 1;
 						INTERSECTED.rotation.y = Math.PI / 4;
-					} else if (INTERSECTED.name == 'hackerrank') {
-						INTERSECTED.scale.x = 2;
-						INTERSECTED.scale.y = 2;
-						INTERSECTED.position.y = 0;
-						INTERSECTED.position.z = 1;
-					} else if (INTERSECTED.name == 'dip') {
-						INTERSECTED.scale.x = 2;
-						INTERSECTED.scale.y = 2;
+					} else if (INTERSECTED.name == 'htmlacademy') {
 						INTERSECTED.position.x = -1;
-						INTERSECTED.position.y = 0;
 						INTERSECTED.position.z = 1;
 						INTERSECTED.rotation.y = - Math.PI / 4;
-					} else if (INTERSECTED.name == 'lookAtMe') {
-						INTERSECTED.material.map = lookAtMeTexture2;
+					} else if (INTERSECTED.name == 'dip') {
+						INTERSECTED.position.z = 1;
 					}
-					
 				}
 			} else {	
 				if ( INTERSECTED ) {
