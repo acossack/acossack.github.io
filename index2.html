@@ -246,46 +246,60 @@
 		myWindow.rotation.y = -0.5 * Math.PI;
 		myWindow.position.set(3.99, 2.2, 0);
 		scene.add(myWindow);
-
-		// htmlacademy
-		var htmlacademyGeometry = new THREE.PlaneGeometry(1, 1);
-		var htmlacademyMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/1.png'), side: THREE.BackSide });
-		var htmlacademy = new THREE.Mesh(htmlacademyGeometry, htmlacademyMaterial);
-		htmlacademy.position.set(2, 1, 2.99);
-		htmlacademy.name = 'htmlacademy';
-		room.add(htmlacademy);
-
-		// hackerrank
-		var hackerrankGeometry = new THREE.PlaneGeometry(1, 1);
-		var hackerrankMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/1.png'), side: THREE.BackSide });
-		var hackerrank = new THREE.Mesh(hackerrankGeometry, hackerrankMaterial);
-		hackerrank.position.set(0, 1, 2.99);
-		hackerrank.name = 'hackerrank';
-		room.add(hackerrank);
-
-		// threejs
-		var threejsGeometry = new THREE.PlaneGeometry(1, 1);
-		var threejsMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/1.png'), side: THREE.BackSide });
-		var threejs = new THREE.Mesh(threejsGeometry, threejsMaterial);
-		threejs.position.set(-2, 1, 2.99);
-		threejs.name = 'threejs';
-		room.add(threejs);
 		
+		
+		// posters
 		// lookAtMe
 		var lookAtMeGeometry = new THREE.PlaneGeometry(1, 1);
-		var lookAtMeTexture1 = loader.load('https://acossack.github.io/pic/2.png');
-		var lookAtMeTexture2 = loader.load('https://acossack.github.io/pic/3.png');				   
+		var lookAtMeTexture1 = loader.load('https://acossack.github.io/pic/00.png');
+		var lookAtMeTexture2 = loader.load('https://acossack.github.io/pic/0.png');				   
 		var lookAtMeMaterial = new THREE.MeshLambertMaterial({ map: lookAtMeTexture1 , side: THREE.FrontSide });
-		var lookAtMeMaterial2 = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/3.png'), side: THREE.FrontSide });
 		var lookAtMe = new THREE.Mesh(lookAtMeGeometry, lookAtMeMaterial);
 		lookAtMe.position.set(0, 1, -2.99);
 		lookAtMe.name = 'lookAtMe';
 		room.add(lookAtMe);
+
+		// vk
+		var vkGeometry = new THREE.PlaneGeometry(1, 0.5);
+		var vkMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/1.png'), side: THREE.FrontSSide });
+		var vk = new THREE.Mesh(vkGeometry, vkMaterial);
+		vk.position.set(-2, 1, -2.99);
+		vk.name = 'vk';
+		room.add(vk);
 		
+		// yatsan
+		var yatsanGeometry = new THREE.PlaneGeometry(1, 0.5);
+		var yatsanMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/2.png'), side: THREE.FrontSSide });
+		var yatsan = new THREE.Mesh(yatsanGeometry, yatsanMaterial);
+		yatsan.position.set(2, 1, -2.99);
+		yatsan.name = 'yatsan';
+		room.add(yatsan);
+		
+		// hackerrank
+		var hackerrankGeometry = new THREE.PlaneGeometry(1, 1);
+		var hackerrankMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/3.png'), side: THREE.BackSide });
+		var hackerrank = new THREE.Mesh(hackerrankGeometry, hackerrankMaterial);
+		hackerrank.position.set(2, 1, 2.99);
+		hackerrank.name = 'hackerrank';
+		room.add(hackerrank);
+		
+		// htmlacademy
+		var htmlacademyGeometry = new THREE.PlaneGeometry(1, 1);
+		var htmlacademyMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/4.png'), side: THREE.BackSide });
+		var htmlacademy = new THREE.Mesh(htmlacademyGeometry, htmlacademyMaterial);
+		htmlacademy.position.set(-2, 1, 2.99);
+		htmlacademy.name = 'htmlacademy';
+		room.add(htmlacademy);
+
+		// dip
+		var dipGeometry = new THREE.PlaneGeometry(1, 0.75);
+		var dipMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/pig.jpg'), side: THREE.BackSide });
+		var dip = new THREE.Mesh(dipGeometry, dipMaterial);
+		dip.position.set(0, 1, 2.99);
+		dip.name = 'dip';
+		room.add(dip);
 		
 
-		
-		
 		var raycaster = new THREE.Raycaster();
 		var renderer = new THREE.WebGLRenderer({ antialias: true });
 		renderer.setPixelRatio(window.devicePixelRatio);
@@ -308,8 +322,6 @@
 		}
 		animate();
 
-		
-		
 		var currentScaleX;
 		var currentScaleY;
 		var currentPositionX;
@@ -356,7 +368,7 @@
 						INTERSECTED.scale.y = 2;
 						INTERSECTED.position.y = 0;
 						INTERSECTED.position.z = 1;
-					} else if (INTERSECTED.name == 'threejs') {
+					} else if (INTERSECTED.name == 'dip') {
 						INTERSECTED.scale.x = 2;
 						INTERSECTED.scale.y = 2;
 						INTERSECTED.position.x = -1;
