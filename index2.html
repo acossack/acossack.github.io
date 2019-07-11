@@ -300,6 +300,7 @@
 		
 		var currentScaleX;
 		var currentScaleY;
+		var currentPositionX;
 		var currentPositionY;
 		var currentPositionZ;
 		var currentRotationY;
@@ -312,34 +313,25 @@
 			if ( intersects.length > 0 ) {
 				if ( INTERSECTED != intersects[ 0 ].object ) {
 					if ( INTERSECTED ) {
-// 						if (INTERSECTED.name == 'htmlacademy') {
 							INTERSECTED.scale.x = currentScaleX;
 							INTERSECTED.scale.y = currentScaleY;
+							INTERSECTED.position.X = currentPositionY;
 							INTERSECTED.position.y = currentPositionY;
 							INTERSECTED.position.z = currentPositionZ;
 							INTERSECTED.rotation.y = currentRotationY;
-// 						} else if (INTERSECTED.name == 'hackerrank') {
-// 							INTERSECTED.scale.x = currentScaleX;
-// 							INTERSECTED.scale.y = currentScaleY;
-// 							INTERSECTED.position.z = currentPositionZ;
-// 							INTERSECTED.rotation.y = currentRotationY;
-// 						} else if (INTERSECTED.name == 'threejs') {
-// 							INTERSECTED.scale.x = currentScaleX;
-// 							INTERSECTED.scale.y = currentScaleY;
-// 							INTERSECTED.position.z = currentPositionZ;
-// 							INTERSECTED.rotation.y = currentRotationY;
-// 						}
 					}
 					
 					INTERSECTED = intersects[ 0 ].object;
 					currentScaleX = INTERSECTED.scale.getComponent(0);
 					currentScaleY = INTERSECTED.scale.getComponent(1);
+					currentPositionX = INTERSECTED.position.getComponent(0);
 					currentPositionY = INTERSECTED.position.getComponent(1);
 					currentPositionZ = INTERSECTED.position.getComponent(2);
 					currentRotationY = INTERSECTED.rotation.y;
 					if (INTERSECTED.name == 'htmlacademy') {
 							INTERSECTED.scale.x = 2
 							INTERSECTED.scale.y = 2;
+							INTERSECTED.position.x = 1;
 							INTERSECTED.position.y = 0;
 							INTERSECTED.position.z = 1;
 							INTERSECTED.rotation.y = Math.PI / 4;
@@ -351,6 +343,7 @@
 					} else if (INTERSECTED.name == 'threejs') {
 							INTERSECTED.scale.x = 2;
 							INTERSECTED.scale.y = 2;
+							INTERSECTED.position.x = -1;
 							INTERSECTED.position.y = 0;
 							INTERSECTED.position.z = 1;
 							INTERSECTED.rotation.y = - Math.PI / 4;
@@ -359,23 +352,12 @@
 				}
 			} else {	
 				if ( INTERSECTED ) {
-// 					if (INTERSECTED.name == 'htmlacademy') {
 						INTERSECTED.scale.x = currentScaleX;
 						INTERSECTED.scale.y = currentScaleY;
+						INTERSECTED.position.x = currentPositionX;
 						INTERSECTED.position.y = currentPositionY;
 						INTERSECTED.position.z = currentPositionZ;
 						INTERSECTED.rotation.y = currentRotationY;
-// 					} else if (INTERSECTED.name == 'hackerrank') {
-// 						INTERSECTED.scale.x = currentScaleX;
-// 						INTERSECTED.scale.y = currentScaleY;	
-// 						INTERSECTED.position.z = currentPositionZ;
-// 						INTERSECTED.rotation.y = currentRotationY;
-// 					} else if (INTERSECTED.name == 'threejs') {
-// 						INTERSECTED.scale.x = currentScaleX;
-// 						INTERSECTED.scale.y = currentScaleY;
-// 						INTERSECTED.position.z = currentPositionZ;
-// 						INTERSECTED.rotation.y = currentRotationY;
-// 					}
 				}
 				INTERSECTED = null;
 			}
