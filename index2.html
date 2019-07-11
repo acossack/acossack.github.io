@@ -356,7 +356,7 @@
 					currentPositionZ = INTERSECTED.position.getComponent(2);
 					currentRotationY = INTERSECTED.rotation.y;
 					
-					INTERSECTED.scale.x = 2
+					INTERSECTED.scale.x = 2;
 					INTERSECTED.scale.y = 2;
 					INTERSECTED.position.y = -0.25;
 					
@@ -381,6 +381,8 @@
 						INTERSECTED.rotation.y = - Math.PI / 4;
 					} else if (INTERSECTED.name == 'dip') {
 						INTERSECTED.position.z = 1;
+						INTERSECTED.scale.x = 4;
+						INTERSECTED.scale.y = 4;
 					}
 				}
 			} else {	
