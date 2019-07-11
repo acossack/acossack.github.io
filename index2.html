@@ -273,14 +273,16 @@
 		
 		// lookAtMe
 		var lookAtMeGeometry = new THREE.PlaneGeometry(1, 1);
-		var lookAtMeMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/2.png'), side: THREE.FrontSide });
+		var lookAtMeTexture1 = loader.load('https://acossack.github.io/pic/2.png');
+		var lookAtMeTexture2 = loader.load('https://acossack.github.io/pic/3.png');				   
+		var lookAtMeMaterial = new THREE.MeshLambertMaterial({ map: lookAtMeTexture1 , side: THREE.FrontSide });
+		var lookAtMeMaterial2 = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/3.png'), side: THREE.FrontSide });
 		var lookAtMe = new THREE.Mesh(lookAtMeGeometry, lookAtMeMaterial);
 		lookAtMe.position.set(0, 1, -2.99);
 		lookAtMe.name = 'lookAtMe';
 		room.add(lookAtMe);
 		
-		var lookAtMeMaterial2 = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/3.png'), side: THREE.FrontSide });
-
+		
 
 		
 		
@@ -360,7 +362,7 @@
 						INTERSECTED.position.z = 1;
 						INTERSECTED.rotation.y = - Math.PI / 4;
 					} else if (INTERSECTED.name == 'threejs') {
-						INTERSECTED.material = lookAtMeMaterial2;
+						INTERSECTED.material.map = lookAtMeTexture2;
 					}
 					
 				}
