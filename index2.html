@@ -329,6 +329,7 @@
 							INTERSECTED.position.y = currentPositionY;
 							INTERSECTED.position.z = currentPositionZ;
 							INTERSECTED.rotation.y = currentRotationY;
+						
 					}
 					
 					INTERSECTED = intersects[ 0 ].object;
@@ -338,25 +339,28 @@
 					currentPositionY = INTERSECTED.position.getComponent(1);
 					currentPositionZ = INTERSECTED.position.getComponent(2);
 					currentRotationY = INTERSECTED.rotation.y;
+					
 					if (INTERSECTED.name == 'htmlacademy') {
-							INTERSECTED.scale.x = 2
-							INTERSECTED.scale.y = 2;
-							INTERSECTED.position.x = 1;
-							INTERSECTED.position.y = 0;
-							INTERSECTED.position.z = 1;
-							INTERSECTED.rotation.y = Math.PI / 4;
+						INTERSECTED.scale.x = 2
+						INTERSECTED.scale.y = 2;
+						INTERSECTED.position.x = 1;
+						INTERSECTED.position.y = 0;
+						INTERSECTED.position.z = 1;
+						INTERSECTED.rotation.y = Math.PI / 4;
 					} else if (INTERSECTED.name == 'hackerrank') {
-							INTERSECTED.scale.x = 2;
-							INTERSECTED.scale.y = 2;
-							INTERSECTED.position.y = 0;
-							INTERSECTED.position.z = 1;
+						INTERSECTED.scale.x = 2;
+						INTERSECTED.scale.y = 2;
+						INTERSECTED.position.y = 0;
+						INTERSECTED.position.z = 1;
 					} else if (INTERSECTED.name == 'threejs') {
-							INTERSECTED.scale.x = 2;
-							INTERSECTED.scale.y = 2;
-							INTERSECTED.position.x = -1;
-							INTERSECTED.position.y = 0;
-							INTERSECTED.position.z = 1;
-							INTERSECTED.rotation.y = - Math.PI / 4;
+						INTERSECTED.scale.x = 2;
+						INTERSECTED.scale.y = 2;
+						INTERSECTED.position.x = -1;
+						INTERSECTED.position.y = 0;
+						INTERSECTED.position.z = 1;
+						INTERSECTED.rotation.y = - Math.PI / 4;
+					} else if (INTERSECTED.name == 'threejs') {
+						INTERSECTED.material = lookAtMeMaterial2;
 					}
 					
 				}
@@ -368,6 +372,7 @@
 						INTERSECTED.position.y = currentPositionY;
 						INTERSECTED.position.z = currentPositionZ;
 						INTERSECTED.rotation.y = currentRotationY;
+					
 				}
 				INTERSECTED = null;
 			}
