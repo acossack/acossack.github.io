@@ -247,21 +247,29 @@
 		myWindow.position.set(3.99, 2.2, 0);
 		scene.add(myWindow);
 
+		// htmlacademy
+		var htmlacademyGeometry = new THREE.PlaneGeometry(1, 1);
+		var htmlacademyMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/1.png'), side: THREE.BackSide });
+		var htmlacademy = new THREE.Mesh(htmlacademyGeometry, htmlacademyMaterial);
+		htmlacademy.position.set(2, 1, 2.99);
+		htmlacademy.name = 'htmlacademy';
+		room.add(htmlacademy);
+
 		// hackerrank
 		var hackerrankGeometry = new THREE.PlaneGeometry(1, 1);
-		var hackerrankMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/1.png'), side: THREE.BothSide });
+		var hackerrankMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/1.png'), side: THREE.BackSide });
 		var hackerrank = new THREE.Mesh(hackerrankGeometry, hackerrankMaterial);
-		hackerrank.position.set(2, 1, -2.99);
+		hackerrank.position.set(0, 1, 2.99);
 		hackerrank.name = 'hackerrank';
 		room.add(hackerrank);
-		
-		// hackerrank2
-		var hackerrank2Geometry = new THREE.PlaneGeometry(1, 1);
-		var hackerrank2Material = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/2.png'), side: THREE.BothSide });
-		var hackerrank2 = new THREE.Mesh(hackerrank2Geometry, hackerrank2Material);
-		hackerrank2.position.set(-2, 1, -2.99);
-		hackerrank2.name = 'hackerrank2';
-		room.add(hackerrank2);
+
+		// threejs
+		var threejsGeometry = new THREE.PlaneGeometry(1, 1);
+		var threejsMaterial = new THREE.MeshLambertMaterial({ map: loader.load('https://acossack.github.io/pic/2.png'), side: THREE.BackSide });
+		var threejs = new THREE.Mesh(threejsGeometry, threejsMaterial);
+		threejs.position.set(-2, 1, 2.99);
+		threejs.name = 'threejs';
+		room.add(threejs);
 
 
 		
@@ -295,26 +303,56 @@
 		var INTERSECTED;
 		var currentScaleX;
 		var currentScaleY;
+		var currentPositionZ;
+		var currentRotationY;
 		function render() {
 			raycaster.setFromCamera({ x: 0, y: 0 }, camera);
 			var intersects = raycaster.intersectObjects(room.children, true);
-			
-			
-			
-						
+					
 			if ( intersects.length > 0 ) {
 				if ( INTERSECTED != intersects[ 0 ].object ) {
 					if ( INTERSECTED ) {
-						(INTERSECTED.name == 'hackerrank') ? INTERSECTED.scale.x = currentScaleX : INTERSECTED.scale.y = currentScaleY;
+						if (INTERSECTED.name == 'httmacademy') {
+							INTERSECTED.scale.x = currentScaleX;
+							INTERSECTED.scale.y = currentScaleY;
+						} else if (INTERSECTED.name == 'hackerrank') {
+							INTERSECTED.scale.x = currentScaleX;
+							INTERSECTED.scale.y = currentScaleY;						
+						} else if (INTERSECTED.name == 'threejs') {
+							INTERSECTED.scale.x = currentScaleX;
+							INTERSECTED.scale.y = currentScaleY;	
+						}
+						
 					}
 					INTERSECTED = intersects[ 0 ].object;
 					currentScaleX = INTERSECTED.scale.getComponent(0);
 					currentScaleY = INTERSECTED.scale.getComponent(1);
-					(INTERSECTED.name == 'hackerrank') ? INTERSECTED.scale.x = 2 : INTERSECTED.scale.y = 2;
+					currentPositionZ = INTERSECTED.position.getComponent(2);
+					currentRotationY = INTERSECTED.rotation.y;
+					if (INTERSECTED.name == 'httmacademy') {
+							INTERSECTED.scale.x = 2
+							INTERSECTED.scale.y = 2;
+					} else if (INTERSECTED.name == 'hackerrank') {
+							INTERSECTED.scale.x = 3;
+							INTERSECTED.scale.y = 3;						
+					} else if (INTERSECTED.name == 'threejs') {
+							INTERSECTED.scale.x = 4;
+							INTERSECTED.scale.y = 4;	
+					}
+					
 				}
 			} else {	
 				if ( INTERSECTED ) {
-					(INTERSECTED.name == 'hackerrank') ? INTERSECTED.scale.x = currentScaleX : INTERSECTED.scale.y = currentScaleY;
+					if (INTERSECTED.name == 'httmacademy') {
+						INTERSECTED.scale.x = currentScaleX;
+						INTERSECTED.scale.y = currentScaleY;
+					} else if (INTERSECTED.name == 'hackerrank') {
+						INTERSECTED.scale.x = currentScaleX;
+						INTERSECTED.scale.y = currentScaleY;						
+					} else if (INTERSECTED.name == 'threejs') {
+						INTERSECTED.scale.x = currentScaleX;
+						INTERSECTED.scale.y = currentScaleY;	
+					}
 				}
 				INTERSECTED = null;
 			}
