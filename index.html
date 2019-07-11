@@ -321,7 +321,6 @@
   		// provided us with a CardboardVRDisplay, use it
   			if (displays.length) {
     				vrDisplay = displays[0];
-    				controls = new THREE.VRControls(camera);
     				vrDisplay.requestAnimationFrame(animate);
   			} else {
     				// If we don't have a VRDisplay, we're probably on
