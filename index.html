@@ -312,17 +312,13 @@
 		dip.name = 'dip';
 		room.add(dip);
 
+		
 		var polyfill = new WebVRPolyfill();
-		// Polyfill always provides us with `navigator.getVRDisplays`
 		navigator.getVRDisplays().then(displays => {
- 		// If we have a native VRDisplay, or if the polyfill
-  		// provided us with a CardboardVRDisplay, use it
   			if (displays.length) {
     				vrDisplay = displays[0];
     				vrDisplay.requestAnimationFrame(animate);
   			} else {
-    				// If we don't have a VRDisplay, we're probably on
-    				// a desktop environment, so set up desktop-oriented controls
     				requestAnimationFrame(animate);
  			}
 		});
