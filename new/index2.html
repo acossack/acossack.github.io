@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<title>WebVR Polyfill Demo</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, shrink-to-fit=no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<style>
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  color: #fff;
+  margin: 0px;
+  padding: 0;
+  overflow: hidden;
+}
+canvas {
+  width: 100%;
+  height: 100%;
+}
+#buttons {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  background: white;
+}
+</style>
+</head>
+
+<body>
+
+  <div id="buttons">
+    <button id="fullscreen">Fullscreen</button>
+    <button id="vr">VR (WebVR/Mobile only)</button>
+  </div>
+
+</body>
+
+<script>
+document.addEventListener('touchmove', function(e) {
+  e.preventDefault();
+});
+</script>
+
+<!-- three.js library -->
+<script src="js/three.js"></script>
+
+<!-- VRControls.js applies the WebVR transformations to a three.js camera object. -->
+<script src="js/VRControls.js"></script>
+
+<!-- OrbitControls.js for controlling camera on desktop.  -->
+<script src="js/OrbitControls.js"></script>
+
+<!-- VREffect.js handles stereo camera setup and rendering.  -->
+<script src="js/VREffect.js"></script>
+
+<script src="js/webvr-polyfill.js"></script>
+
+
+<script>
+// Get config from URL
+var config = (function() {
+  var config = {};
+  var q = window.location.search.substring(1);
+  if (q === '') {
+    return config;
+  }
+  var params = q.split('&');
+  var param, name, value;
+  for (var i = 0; i < params.length; i++) {
+    param = params[i].split('=');
+    name = param[0];
+    value = param[1];
+    // All config values are either boolean or float
+    config[name] = value === 'true' ? true :
+                   value === 'false' ? false :
+                   parseFloat(value);
+  }
+  return config;
+})();
+var polyfill = new WebVRPolyfill(config);
+console.log("Using webvr-polyfill version " + WebVRPolyfill.version +
+            " with configuration: " + JSON.stringify(config));
+var renderer = new THREE.WebGLRenderer();
+renderer.setPixelRatio(Math.floor(window.devicePixelRatio));
+// Append the canvas element created by the renderer to document body element.
+var canvas = renderer.domElement;
+document.body.appendChild(canvas);
+// Create a three.js scene.
+var scene = new THREE.Scene();
+// Create a three.js camera.
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
+// Create a reticle
+var reticle = new THREE.Mesh(
+  new THREE.RingBufferGeometry(0.005, 0.01, 15),
+  new THREE.MeshBasicMaterial({ color: 0xffffff })
+);
+reticle.position.z = -0.5;
+camera.add(reticle);
+scene.add(camera);
+// Apply VR stereo rendering to renderer.
+var effect = new THREE.VREffect(renderer);
+effect.setSize(canvas.clientWidth, canvas.clientHeight, false);
+var vrDisplay, controls;
+
+
+
+
+
+
+
+
+
+var light = new THREE.AmbientLight(0xffffff);
+		scene.add(light);
+		// box
+		var geometry = new THREE.BoxGeometry(8, 6, 6);
+		var loader = new THREE.TextureLoader();
+		var textureW = loader.load('acossack.github.io/pic/wallpaper.png');
+		textureW.wrapS = THREE.RepeatWrapping;
+		textureW.wrapT = THREE.RepeatWrapping;
+		textureW.repeat.set(8, 8);
+		var textureF = loader.load('acossack.github.io/pic/floor.png');
+		textureF.wrapS = THREE.RepeatWrapping;
+		textureF.wrapT = THREE.RepeatWrapping;
+		textureF.repeat.set(3, 2);
+		var textureC = loader.load('acossack.github.io/pic/ceiling.png');
+		textureC.wrapS = THREE.RepeatWrapping;
+		textureC.wrapT = THREE.RepeatWrapping;
+		textureC.repeat.set(3, 2);
+		var materials = [
+			new THREE.MeshBasicMaterial({ map: textureW, side: THREE.BackSide }),
+			new THREE.MeshBasicMaterial({ map: textureW, side: THREE.BackSide }),
+			new THREE.MeshBasicMaterial({ map: textureC, side: THREE.BackSide }),
+			new THREE.MeshBasicMaterial({ map: textureF, side: THREE.BackSide }),
+			new THREE.MeshBasicMaterial({ map: textureW, side: THREE.BackSide }),
+			new THREE.MeshBasicMaterial({ map: textureW, side: THREE.BackSide }),
+		];
+		var room = new THREE.Mesh(geometry, materials);
+		room.position.y = 2;
+		scene.add(room);
+		// models
+		var loader = new THREE.GLTFLoader();
+		// sofa
+		loader.load('acossack.github.io/mod/sofa.glb', function (gltf) {
+			sofa = gltf.scene;
+			sofa.scale.set(0.04, 0.04, 0.04);
+			sofa.position.set(0, -1, -1.3)
+			sofa.rotation.y = - Math.PI / 2;
+			scene.add(sofa);
+		},
+			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
+			function (error) { console.log('An error happened'); }
+		);
+		// vlamp
+		loader.load('acossack.github.io/mod/vlamp.glb', function (gltf) {
+			vlamp = gltf.scene;
+			vlamp.scale.set(0.2, 0.2, 0.2);
+			vlamp.position.set(-3.4, -1, -2.4)
+			scene.add(vlamp);
+		},
+			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
+			function (error) { console.log('An error happened'); }
+		);
+		// table
+		loader.load('acossack.github.io/mod/table.glb', function (gltf) {
+			table = gltf.scene;
+			table.scale.set(0.04, 0.05, 0.04);
+			table.position.set(1.5, -1, 2.4)
+			table.rotation.y = - Math.PI;
+			scene.add(table);
+		},
+			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
+			function (error) { console.log('An error happened'); }
+		);
+		// chair
+		loader.load('acossack.github.io/mod/chair.glb', function (gltf) {
+			chair = gltf.scene;
+			chair.scale.set(0.9, 0.9, 0.9);
+			chair.position.set(2, 0, 1)
+			chair.rotation.y = Math.PI / 10;
+			scene.add(chair);
+		},
+			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
+			function (error) { console.log('An error happened'); }
+		);
+		// laptop
+		loader.load('acossack.github.io/mod/laptop.glb', function (gltf) {
+			laptop = gltf.scene;
+			laptop.scale.set(0.1, 0.1, 0.1);
+			laptop.position.set(1.5, 0.6, 2.3)
+			laptop.rotation.y = Math.PI * 0.97;
+			scene.add(laptop);
+		},
+			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
+			function (error) { console.log('An error happened'); }
+		);
+		// lamp
+		loader.load('acossack.github.io/mod/lamp.glb', function (gltf) {
+			lamp = gltf.scene;
+			lamp.scale.set(0.04, 0.04, 0.04);
+			lamp.position.set(2.5, 0.6, 2.4)
+			lamp.rotation.y = Math.PI * 0.9;
+			scene.add(lamp);
+		},
+			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
+			function (error) { console.log('An error happened'); }
+		);
+		// vr
+		loader.load('acossack.github.io/mod/vr.glb', function (gltf) {
+			myVr = gltf.scene;
+			myVr.scale.set(0.2, 0.2, 0.2);
+			myVr.position.set(0.5, 0.7, 2.4)
+			myVr.rotation.y = Math.PI * 1.2;
+			scene.add(myVr);
+		},
+			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
+			function (error) { console.log('An error happened'); }
+		);
+		// mug
+		loader.load('acossack.github.io/mod/mug.glb', function (gltf) {
+			mug = gltf.scene;
+			mug.scale.set(0.05, 0.05, 0.05);
+			mug.position.set(0.5, -0.65, 2)
+			mug.rotation.y = - Math.PI / 2;
+			scene.add(mug);
+		},
+			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
+			function (error) { console.log('An error happened'); }
+		);
+		// cyra
+		loader.load('acossack.github.io/mod/cyra.glb', function (gltf) {
+			cyra = gltf.scene;
+			cyra.scale.set(0.2, 0.2, 0.2);
+			cyra.position.set(1.5, 1.45, 2.87)
+			cyra.rotation.y = Math.PI / 2;
+			scene.add(cyra);
+		},
+			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
+			function (error) { console.log('An error happened'); }
+		);
+		// furniture
+		loader.load('acossack.github.io/mod/furniture.glb', function (gltf) {
+			furniture = gltf.scene;
+			furniture.scale.set(0.02, 0.02, 0.02);
+			furniture.position.set(-2, -1, 2.3)
+			furniture.rotation.y = Math.PI;
+			scene.add(furniture);
+		},
+			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
+			function (error) { console.log('An error happened'); }
+		);
+		// flowers
+		loader.load('acossack.github.io/mod/flowers.glb', function (gltf) {
+			flowers = gltf.scene;
+			flowers.scale.set(0.02, 0.02, 0.02);
+			flowers.position.set(-1.3, -0.25, 2.6)
+			flowers.rotation.y = Math.PI / 4;
+			scene.add(flowers);
+		},
+			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
+			function (error) { console.log('An error happened'); }
+		);
+		// books
+		loader.load('acossack.github.io/mod/books.glb', function (gltf) {
+			books = gltf.scene;
+			books.scale.set(1, 1, 1);
+			books.position.set(-3, 1.5, 2.75)
+			scene.add(books);
+		},
+			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
+			function (error) { console.log('An error happened'); }
+		);
+		// curtains
+		loader.load('acossack.github.io/mod/curtains.glb', function (gltf) {
+			curtains = gltf.scene;
+			curtains.scale.set(0.0022, 0.002, 0.002);
+			curtains.position.set(3.5, 3.8, 0)
+			curtains.rotation.y = - Math.PI / 2;
+			scene.add(curtains);
+		},
+			function (xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
+			function (error) { console.log('An error happened'); }
+		);
+		// textures
+		var loader = new THREE.TextureLoader();
+		// door
+		var doorGeometry = new THREE.PlaneGeometry(2, 4);
+		var doorMaterial = new THREE.MeshLambertMaterial({ map: loader.load('acossack.github.io/pic/door.jpg'), side: THREE.BackSide });
+		var door = new THREE.Mesh(doorGeometry, doorMaterial);
+		door.rotation.y = -0.5 * Math.PI;
+		door.position.set(-3.99, 1, 0);
+		scene.add(door);
+		// window
+		var myWindowGeometry = new THREE.PlaneGeometry(2.6, 2.6);
+		var myWindowMaterial = new THREE.MeshLambertMaterial({ map: loader.load('acossack.github.io/pic/window.jpg'), side: THREE.FrontSide });
+		var myWindow = new THREE.Mesh(myWindowGeometry, myWindowMaterial);
+		myWindow.rotation.y = -0.5 * Math.PI;
+		myWindow.position.set(3.99, 2.2, 0);
+		scene.add(myWindow);
+		// joke
+		var jokeGeometry = new THREE.PlaneGeometry(2.5, 0.625);
+		var jokeMaterial = new THREE.MeshLambertMaterial({ map: loader.load('acossack.github.io/pic/joke.png'), side: THREE.DoubleSide });
+		var joke = new THREE.Mesh(jokeGeometry, jokeMaterial);
+		joke.position.set(0, 3.5, 2.99);
+		scene.add(joke);
+		// posters
+		// lookAtMe
+		var lookAtMeGeometry = new THREE.PlaneGeometry(1, 0.75);
+		var lookAtMeTexture1 = loader.load('acossack.github.io/pic/00.png');
+		var lookAtMeTexture2 = loader.load('acossack.github.io/pic/0.png');
+		var lookAtMeMaterial = new THREE.MeshLambertMaterial({ map: lookAtMeTexture1, side: THREE.FrontSide });
+		var lookAtMe = new THREE.Mesh(lookAtMeGeometry, lookAtMeMaterial);
+		lookAtMe.position.set(0, 0.5, -2.99);
+		lookAtMe.name = 'lookAtMe';
+		room.add(lookAtMe);
+		// vk
+		var vkGeometry = new THREE.PlaneGeometry(1, 0.5);
+		var vkMaterial = new THREE.MeshLambertMaterial({ map: loader.load('acossack.github.io/pic/1.png'), side: THREE.FrontSide });
+		var vk = new THREE.Mesh(vkGeometry, vkMaterial);
+		vk.position.set(-1.7, 0.5, -2.99);
+		vk.name = 'vk';
+		room.add(vk);
+		// yatsan
+		var yatsanGeometry = new THREE.PlaneGeometry(1, 0.5);
+		var yatsanMaterial = new THREE.MeshLambertMaterial({ map: loader.load('acossack.github.io/pic/2.png'), side: THREE.FrontSide });
+		var yatsan = new THREE.Mesh(yatsanGeometry, yatsanMaterial);
+		yatsan.position.set(1.7, 0.5, -2.99);
+		yatsan.name = 'yatsan';
+		room.add(yatsan);
+		// hackerrank
+		var hackerrankGeometry = new THREE.PlaneGeometry(1, 1);
+		var hackerrankMaterial = new THREE.MeshLambertMaterial({ map: loader.load('acossack.github.io/pic/3.png'), side: THREE.BackSide });
+		var hackerrank = new THREE.Mesh(hackerrankGeometry, hackerrankMaterial);
+		hackerrank.position.set(1.7, 0.5, 2.99);
+		hackerrank.name = 'hackerrank';
+		room.add(hackerrank);
+		// htmlacademy
+		var htmlacademyGeometry = new THREE.PlaneGeometry(1, 1);
+		var htmlacademyMaterial = new THREE.MeshLambertMaterial({ map: loader.load('acossack.github.io/pic/4.png'), side: THREE.BackSide });
+		var htmlacademy = new THREE.Mesh(htmlacademyGeometry, htmlacademyMaterial);
+		htmlacademy.position.set(-1.7, 0.5, 2.99);
+		htmlacademy.name = 'htmlacademy';
+		room.add(htmlacademy);
+		// dip
+		var dipGeometry = new THREE.PlaneGeometry(0.5, 0.375);
+		var dipMaterial = new THREE.MeshLambertMaterial({ map: loader.load('acossack.github.io/pic/dip.png'), side: THREE.BackSide });
+		var dip = new THREE.Mesh(dipGeometry, dipMaterial);
+		dip.position.set(0, 0.5, 2.99);
+		dip.name = 'dip';
+		room.add(dip);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// The polyfill provides this in the event this browser
+// does not support WebVR 1.1
+navigator.getVRDisplays().then(function (vrDisplays) {
+  // If we have a native display, or we have a CardboardVRDisplay
+  // from the polyfill, use it
+  if (vrDisplays.length) {
+    vrDisplay = vrDisplays[0];
+    // Apply VR headset positional data to camera.
+    controls = new THREE.VRControls(camera);
+    // Kick off the render loop.
+    vrDisplay.requestAnimationFrame(animate);
+  }
+  // Otherwise, we're on a desktop environment with no native
+  // displays, so provide controls for a monoscopic desktop view
+  else {
+    controls = new THREE.OrbitControls(camera);
+    controls.target.set(0, 0, -1);
+    // Disable the "Enter VR" button
+    var enterVRButton = document.querySelector('#vr');
+    enterVRButton.disabled = true;
+    // Kick off the render loop.
+    requestAnimationFrame(animate);
+  }
+});
+// Request animation frame loop function
+var lastRender = 0;
+function animate(timestamp) {
+  var delta = Math.min(timestamp - lastRender, 500);
+  lastRender = timestamp;
+  // Apply rotation to cube mesh
+  cube.rotation.y += delta * 0.0002;
+  // Update VR headset position and apply to camera.
+  controls.update();
+  // Render the scene.
+  effect.render(scene, camera);
+  // Keep looping; if using a VRDisplay, call its requestAnimationFrame,
+  // otherwise call window.requestAnimationFrame.
+  if (vrDisplay) {
+    vrDisplay.requestAnimationFrame(animate);
+  } else {
+    requestAnimationFrame(animate);
+  }
+}
+function onResize() {
+  // The delay ensures the browser has a chance to layout
+  // the page and update the clientWidth/clientHeight.
+  // This problem particularly crops up under iOS.
+  if (!onResize.resizeDelay) {
+    onResize.resizeDelay = setTimeout(function () {
+      onResize.resizeDelay = null;
+      console.log('Resizing to %s x %s.', canvas.clientWidth, canvas.clientHeight);
+      effect.setSize(canvas.clientWidth, canvas.clientHeight, false);
+      camera.aspect = canvas.clientWidth / canvas.clientHeight;
+      camera.updateProjectionMatrix();
+    }, 250);
+  }
+}
+function onVRDisplayPresentChange() {
+  console.log('onVRDisplayPresentChange');
+  onResize();
+  buttons.hidden = vrDisplay.isPresenting;
+}
+function onVRDisplayConnect(e) {
+  console.log('onVRDisplayConnect', (e.display || (e.detail && e.detail.display)));
+}
+// Resize the WebGL canvas when we resize and also when we change modes.
+window.addEventListener('resize', onResize);
+window.addEventListener('vrdisplaypresentchange', onVRDisplayPresentChange);
+window.addEventListener('vrdisplayconnect', onVRDisplayConnect);
+// Button click handlers.
+document.querySelector('button#fullscreen').addEventListener('click', function() {
+  enterFullscreen(renderer.domElement);
+});
+document.querySelector('button#vr').addEventListener('click', function() {
+  vrDisplay.requestPresent([{source: renderer.domElement}]);
+});
+function enterFullscreen (el) {
+  if (el.requestFullscreen) {
+    el.requestFullscreen();
+  } else if (el.mozRequestFullScreen) {
+    el.mozRequestFullScreen();
+  } else if (el.webkitRequestFullscreen) {
+    el.webkitRequestFullscreen();
+  } else if (el.msRequestFullscreen) {
+    el.msRequestFullscreen();
+  }
+}
+</script>
+
+</html>
