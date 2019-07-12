@@ -37,29 +37,11 @@
 		crosshair.position.z = - 2;
 		camera.add(crosshair);
 		
-		
-		
-		var listener = new THREE.AudioListener();
-		camera.add( listener );
-
-		// create a global audio source
-		var sound = new THREE.Audio( listener );
-
-		// load a sound and set it as the Audio object's buffer
-		var audioLoader = new THREE.AudioLoader();
-		audioLoader.load( 'pic/audio.ogg', function( buffer ) {
-			sound.setBuffer( buffer );
-			sound.setLoop( true );
-			sound.setVolume( 0.5 );
-			sound.play();
-		});
-		
-		
-
 
 		var light = new THREE.AmbientLight(0xffffff);
 		scene.add(light);
 
+		
 		// box
 		var geometry = new THREE.BoxGeometry(8, 6, 6);
 
@@ -95,6 +77,23 @@
 		scene.add(room);
 
 
+		// audio
+		var listener = new THREE.AudioListener();
+		camera.add( listener );
+
+		// create a global audio source
+		var sound = new THREE.Audio( listener );
+
+		// load a sound and set it as the Audio object's buffer
+		var audioLoader = new THREE.AudioLoader();
+		audioLoader.load( 'pic/audio.ogg', function( buffer ) {
+			sound.setBuffer( buffer );
+			sound.setLoop( true );
+			sound.setVolume( 0.1 );
+			sound.play();
+		});
+		
+		
 		// models
 		var loader = new THREE.GLTFLoader();
 
