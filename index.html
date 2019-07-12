@@ -324,7 +324,7 @@
   			
   			else {
     				controls = new THREE.OrbitControls(camera);
-//     				controls.target.set(0, 0, -1);
+    				controls.update();
     				var enterVRButton = document.querySelector('#vr');
    				enterVRButton.disabled = true;
     				requestAnimationFrame(animate);
