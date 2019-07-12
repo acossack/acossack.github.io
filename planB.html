@@ -32,8 +32,10 @@
 		);
 		crosshair.position.z = - 2;
 		camera.add(crosshair);
+		
 		var light = new THREE.AmbientLight(0xffffff);
 		scene.add(light);
+		
 		// box
 		var geometry = new THREE.BoxGeometry(8, 6, 6);
 		var loader = new THREE.TextureLoader();
@@ -60,6 +62,19 @@
 		var room = new THREE.Mesh(geometry, materials);
 		room.position.y = 2;
 		scene.add(room);
+		// audio
+		var listener = new THREE.AudioListener();
+		camera.add( listener );
+		var sound = new THREE.Audio( listener );
+		var audioLoader = new THREE.AudioLoader();
+		audioLoader.load( 'audio.ogg', function( buffer ) {
+			sound.setBuffer( buffer );
+			sound.setLoop( true );
+			sound.setVolume( 0.50 );
+			sound.play();
+		});
+		
+		
 		// models
 		var loader = new THREE.GLTFLoader();
 		// sofa
@@ -272,13 +287,17 @@
 		room.add(dip);
 		
 		var polyfill = new WebVRPolyfill();
-		navigator.getVRDisplays().then(displays => {
-  			if (displays.length) {
-    				vrDisplay = displays[0];
+		navigator.getVRDisplays().then(function (vrDisplays) {
+  			if (vrDisplays.length) {
+   				vrDisplay = vrDisplays[0];
     				vrDisplay.requestAnimationFrame(animate);
-  			} else {
+  			}
+  			
+  			else {
+    				var enterVRButton = document.querySelector('#vr');
+   				enterVRButton.disabled = true;
     				requestAnimationFrame(animate);
- 			}
+  			}
 		});
 		
 		// ray and renderer
