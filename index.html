@@ -16,6 +16,7 @@
 	<script src="js/GLTFLoader.js"></script>
 	<script src='js/webvr-polyfill.min.js'></script>
 	<script src="js/WebVR.js"></script>
+	<script src="new/js/OrbitControls.js"></script>
 </head>
 <body>
 	<script>		
@@ -314,13 +315,29 @@
 
 		
 		var polyfill = new WebVRPolyfill();
-		navigator.getVRDisplays().then(displays => {
-  			if (displays.length) {
-    				vrDisplay = displays[0];
+		// The polyfill provides this in the event this browser
+		// does not support WebVR 1.1
+		navigator.getVRDisplays().then(function (vrDisplays) {
+  			// If we have a native display, or we have a CardboardVRDisplay
+  			// from the polyfill, use it
+  			if (vrDisplays.length) {
+   				vrDisplay = vrDisplays[0];
+    				// Apply VR headset positional data to camera.
+    				controls = new THREE.VRControls(camera);
+   				// Kick off the render loop.
     				vrDisplay.requestAnimationFrame(animate);
-  			} else {
+  			}
+  			// Otherwise, we're on a desktop environment with no native
+  			// displays, so provide controls for a monoscopic desktop view
+  			else {
+    				controls = new THREE.OrbitControls(camera);
+    				controls.target.set(0, 0, -1);
+    				// Disable the "Enter VR" button
+    				var enterVRButton = document.querySelector('#vr');
+   				 enterVRButton.disabled = true;
+   				 // Kick off the render loop.
     				requestAnimationFrame(animate);
- 			}
+  			}
 		});
 
 		
