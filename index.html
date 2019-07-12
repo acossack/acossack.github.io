@@ -323,8 +323,6 @@
   			}
   			
   			else {
-    				controls = new THREE.OrbitControls(camera);
-    				controls.update();
     				var enterVRButton = document.querySelector('#vr');
    				enterVRButton.disabled = true;
     				requestAnimationFrame(animate);
@@ -351,7 +349,6 @@
 
 
 		function animate() {
-			controls.update();
 			renderer.setAnimationLoop(render);
 		}
 		animate();
